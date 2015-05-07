@@ -143,10 +143,10 @@ enum ReadyState {
 };
 ```
 
-|Enumeration description        |
+|枚举描述         |               |
 |:-------------:|:-------------:|
 | closed        | 表明MediaSource没有与数据元素相关联。 |
-| open          | 表明MediaSource被数据元素打开，而且已经允许创建SourceBuffer对象，并向其中添加数据元素     |
+| open          | MediaSource被媒体元素打开，可以创建SourceBuffer并向其中添加数据     |
 | ended         | MediaSource依旧跟数据元素相关联，但是endOfStream()方法触发了      |
 
 ```
@@ -157,7 +157,7 @@ enum EndOfStreamError {
 };
 ```
 
-|Enumeration description        |
+|枚举描述         |               |   
 |:-------------:|:-------------:|
 | network       | 播放终止，是网络出现错误的标志。 |
 | decode        | 播放终止，是解码出现错误的标志。     |
@@ -179,6 +179,7 @@ interface MediaSource : EventTarget {
 ###2.1 属性
 
 ####activeSourceBuffers
+
 >类型：SourceBufferList
 >只读  
 
@@ -189,6 +190,7 @@ interface MediaSource : EventTarget {
 >在这Changes to selected/enable track state章节描述了该属性是如何更新的。
 
 ####duration
+
 >类型：[unrestricted double](http://dev.w3.org/2006/webapi/WebIDL/#idl-unrestricted-double)
 
 允许web应用设置播放的时间，在MediaSource对象创建的时候，duration的初始值设置为NaN.
@@ -217,12 +219,13 @@ interface MediaSource : EventTarget {
 包括跟该MediaSource相关联的所有的SourceBuffer对象。当readyState的值为"false"时，这个列表为空。一旦readyState的为"open"状态，SourceBuffer对象可以添加到该列表通过addSourceBuffer().
 
 ###2.2 方法
+
 ####addSourceBuffer(type)
 
 添加一个SourceBuffer到sourceBuffers里
 返回类型：SourceBuffer
 
-|Parameter     |Type          |Nullable      |Optional      |Description   |
+|      参数     |     类型     |   可否为空     |  其他选项      |     描述      |
 |:------------:|:------------:|:------------:|:------------:|:------------:|
 | type         | DOMString    |     ✘        |        ✘     |              |
 
@@ -241,9 +244,10 @@ interface MediaSource : EventTarget {
 *   返回新建的对象
 
 ####endOfStream
+
 发出终止流的信号
 
-|Parameter     |Type          |Nullable      |Optional      |Description   |
+|      参数     |     类型     |   可否为空     |  其他选项      |     描述      |
 |:------------:|:------------:|:------------:|:------------:|:------------:|
 | error         | EndOfStreamError    |     ✘      |   ✘  |              |
 
@@ -259,7 +263,7 @@ interface MediaSource : EventTarget {
 >如果这个方法返回true，它仅仅表明MediaSource可以为指定的MIME type创建SourceBuffer对象，但是若大量的媒体不支持创建额外的SourceBuffer对象，执行addSourceBuffer()时仍然可能出错。
 >如果这个方法返回true，意味着HTMLMediaElement.canPlayType()可能返回 "maybe" or "probably"，因为MediaSource支持一个类型，但HTMLMediaElement却不能播放是没有意义的。
 
-|Parameter     |Type          |Nullable      |Optional      |Description   |
+|      参数     |     类型     |   可否为空     |  其他选项      |     描述      |
 |:------------:|:------------:|:------------:|:------------:|:------------:|
 | type         | DOMString    |     ✘        |        ✘     |              |
 
@@ -276,7 +280,7 @@ interface MediaSource : EventTarget {
 ####removeSourceBuffer
 从MediaSource中移除一个SourceBuffer
 
-|Parameter     |Type          |Nullable      |Optional      |Description   |
+|      参数     |     类型     |   可否为空     |  其他选项      |     描述      |
 |:------------:|:------------:|:------------:|:------------:|:------------:|
 | sourceBuffer | SourceBuffer |     ✘        |        ✘     |              |
 
@@ -329,3 +333,12 @@ interface MediaSource : EventTarget {
 *   移除sourceBuffers中的sourceBuffer,并在sourceBuffers返回的SourceBufferList中[添加](http://www.w3.org/TR/html5/webappapis.html#queue-a-task)removesourcebuffer[事件](http://www.w3.org/TR/html5/webappapis.html#fire-a-simple-event)。
 *   释放sourceBuffer的所有资源。
 
+###2.3 事件总结
+
+|事件名称        |     接口     |   触发时间     |
+|:------------:|:------------:|:------------:|
+| sourceopen   | Event        |     readyState属性从"closed"变成"open"或从"ended"变成"open"|
+| sourceended  | Event        |     readyState属性从"open"变成"ended"|
+| sourceclose   | Event        |     readyState属性从"open"变成"closed"或从"ended"变成"closed"|
+
+###2.4 算法
