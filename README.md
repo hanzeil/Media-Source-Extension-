@@ -342,3 +342,14 @@ interface MediaSource : EventTarget {
 | sourceclose   | Event        |     readyState属性从"open"变成"closed"或从"ended"变成"closed"|
 
 ###2.4 算法
+
+####2.4.1 添加到媒体元素
+
+一个MediaSource对象可以添加到媒体元素，通过分配一个MediaSource object URL到媒体元素的src属性，一个MediaSource object URL通过MediaSource对象的createObjectURL()创建。
+
+如果[resource fetch algorithm](http://www.w3.org/TR/html5/embedded-content-0.html#concept-media-load-resource)的绝对路径与MediaSource object URL相匹配，那么在执行resource fetch algorithm中的"Perform a potentially CORS-enabled fetch"步骤前，执行以下步骤。
+*   如果readyState不是"closed"，执行resource fetch algorithm中的 "If the media data cannot be fetched at all, due to network errors, causing the user agent to give up trying to fetch the resource"步骤。
+*   否则
+    -   将readyState置为"open".
+    -   在MediaSource中[添加](http://www.w3.org/TR/html5/webappapis.html#queue-a-task)sourceopen[事件](http://www.w3.org/TR/html5/webappapis.html#fire-a-simple-event)。
+    -   执行resource fetch algorithm中的"Perform a potentially CORS-enabled fetch"步骤
