@@ -94,12 +94,12 @@ MediaSource对象的URL是一个Blob类型[[FILE API](http://www.w3.org/TR/FileA
 
 MediaSource对象的URL的来源是[effective script origin](http://www.w3.org/TR/html5/browsers.html#effective-script-origin)调用的[createObjectURL()](http://www.w3.org/TR/media-source/#widl-URL-createObjectURL-DOMString-MediaSource-mediaSource).  
 
->比如，MediaSource对象的URL的来源影响媒体元素[consumed by canvas](http://www.w3.org/TR/html5/scripting-1.html#security-with-canvas-elements)的方式。  
+>比如，MediaSource对象的URL的来源影响HTML5媒体标签[consumed by canvas](http://www.w3.org/TR/html5/scripting-1.html#security-with-canvas-elements)的方式。  
 
 ####Parent Media Source（父MediaSource对象）
 创建SourceBuffer对象的那个MediaSource对象是该SourceBuffer对象的父MediaSource对象。
 
-####Presentation Start Time（开始时间）  
+####Presentation Start Time（播放开始时间）  
 开始时间是播放开始的最早时间点，并指定[initial playback position](http://www.w3.org/TR/html5/embedded-content-0.html#initial-playback-position)和[earliest possible position](http://www.w3.org/TR/html5/embedded-content-0.html#earliest-possible-position).而且用此规范的创建的媒体的开始时间为0。  
 
 ####Presentation Interval（显示间隔）
@@ -145,9 +145,9 @@ enum ReadyState {
 
 |枚举描述         |               |
 |:-------------:|:-------------:|
-| closed        | 表明MediaSource没有与数据元素相关联。 |
-| open          | MediaSource被媒体元素打开，可以创建SourceBuffer并向其中添加数据     |
-| ended         | MediaSource依旧跟数据元素相关联，但是endOfStream()方法触发了      |
+| closed        | 表明MediaSource没有与媒体标签相关联。 |
+| open          | MediaSource被媒体标签打开，可以创建SourceBuffer并向其中添加数据     |
+| ended         | MediaSource依旧跟数据标签相关联，但是endOfStream()方法触发了      |
 
 ```
 WebIDL
@@ -193,7 +193,7 @@ interface MediaSource : EventTarget {
 
 >类型：[unrestricted double](http://dev.w3.org/2006/webapi/WebIDL/#idl-unrestricted-double)
 
-允许web应用设置播放的时间，在MediaSource对象创建的时候，duration的初始值设置为NaN.
+允许web应用设置播放的持续时间，在MediaSource对象创建的时候，duration的初始值设置为NaN.
 获取时，执行以下步骤：
 
 *   如果readystate属性为”closed”,那么返回NaN。
@@ -240,7 +240,7 @@ interface MediaSource : EventTarget {
 *   新建一个新的SourceBuffer对象和相关联的资源
 *   将新建对象的generate timestamps flag的值设置成与参数type对应的[MSE-REGISTRY](http://www.w3.org/TR/media-source/#bib-MSE-REGISTRY)中的"Generate Timestamps Flag"值。
 *   如果generate timestamps flag等于true,将属性mode设置为"sequence",否则，设置为"segments".
-*   将新建的对象添加到属性sourceBuffers，并在sourceBuffers中[添加](http://www.w3.org/TR/html5/webappapis.html#queue-a-task)addSourceBuffer[事件](http://www.w3.org/TR/html5/webappapis.html#fire-a-simple-event)。
+*   将新建的对象添加到属性sourceBuffers，并[触发](http://www.w3.org/TR/html5/webappapis.html#queue-a-task)sourceBuffers中的addSourceBuffer[事件](http://www.w3.org/TR/html5/webappapis.html#fire-a-simple-event)。
 *   返回新建的对象
 
 ####endOfStream
@@ -291,8 +291,8 @@ interface MediaSource : EventTarget {
 *   如果sourceBuffer的updating属性为true,执行以下步骤
     -   如果buffer append和stream append loop算法还在执行，将其终止。
     -   将sourceBuffer的updating属性置成false.
-    -   在sourceBuffer中[添加](http://www.w3.org/TR/html5/webappapis.html#queue-a-task)abort[事件](http://www.w3.org/TR/html5/webappapis.html#fire-a-simple-event)。
-    -   在sourceBuffer中[添加](http://www.w3.org/TR/html5/webappapis.html#queue-a-task)updateend[事件](http://www.w3.org/TR/html5/webappapis.html#fire-a-simple-event)。
+    -   在[触发](http://www.w3.org/TR/html5/webappapis.html#queue-a-task)sourceBuffer中的abort[事件](http://www.w3.org/TR/html5/webappapis.html#fire-a-simple-event)。
+    -   在[触发](http://www.w3.org/TR/html5/webappapis.html#queue-a-task)sourceBuffer中的updateend[事件](http://www.w3.org/TR/html5/webappapis.html#fire-a-simple-event)。
 *   让SourceBuffer audioTracks list等于sourceBuffer.audioTracks返回的AudioTrackList对象。
 *   如果SourceBuffer audioTracks list不空，执行以下步骤
     -   让HTMLMediaElement audioTracks list等于HTMLMediaElement中属性audioTracks返回的[AudioTrackList](http://www.w3.org/TR/html5/embedded-content-0.html#audiotracklist)对象。
@@ -301,10 +301,10 @@ interface MediaSource : EventTarget {
         +   将[AudioTrack](http://www.w3.org/TR/html5/embedded-content-0.html#audiotrack)对象的sourceBuffer属性置空。
         +   如果AudioTrack对象中的enabled属性为true,那么将removed enabled audio track flag设置为true.
         +   移除HTMLMediaElement audioTracks list中的AudioTrack对象。
-        +   在HTMLMediaElement audioTracks list中[添加](http://www.w3.org/TR/html5/webappapis.html#queue-a-task) [removetrack](http://www.w3.org/TR/html5/embedded-content-0.html#handler-tracklist-onremovetrack)事件([trusted event](http://www.w3.org/TR/html5/infrastructure.html#concept-events-trusted) 不可撤销)。
+        +   [触发](http://www.w3.org/TR/html5/webappapis.html#queue-a-task)HTMLMediaElement audioTracks list中的[removetrack](http://www.w3.org/TR/html5/embedded-content-0.html#handler-tracklist-onremovetrack)事件([trusted event](http://www.w3.org/TR/html5/infrastructure.html#concept-events-trusted) 不可撤销)。
         +   移除SourceBuffer audioTracks list中的AudioTrack对象。
-        +   在SourceBuffer audioTracks list中[添加](http://www.w3.org/TR/html5/webappapis.html#queue-a-task) [removetrack](http://www.w3.org/TR/html5/embedded-content-0.html#handler-tracklist-onremovetrack)事件([trusted event](http://www.w3.org/TR/html5/infrastructure.html#concept-events-trusted) 不可撤销)。
-    -   如果removed enabled audio track flag等于true,在HTMLMediaElement audioTracks list中[添加](http://www.w3.org/TR/html5/webappapis.html#queue-a-task) [change](http://www.w3.org/TR/html5/embedded-content-0.html#handler-tracklist-onchange) [事件](http://www.w3.org/TR/html5/webappapis.html#fire-a-simple-event)。
+        +   [触发](http://www.w3.org/TR/html5/webappapis.html#queue-a-task)SourceBuffer audioTracks list中的[removetrack](http://www.w3.org/TR/html5/embedded-content-0.html#handler-tracklist-onremovetrack)事件([trusted event](http://www.w3.org/TR/html5/infrastructure.html#concept-events-trusted) 不可撤销)。
+    -   如果removed enabled audio track flag等于true,[触发](http://www.w3.org/TR/html5/webappapis.html#queue-a-task)HTMLMediaElement audioTracks list中的[change](http://www.w3.org/TR/html5/embedded-content-0.html#handler-tracklist-onchange) [事件](http://www.w3.org/TR/html5/webappapis.html#fire-a-simple-event)。
 *   让SourceBuffer videoTracks list等于sourceBuffer.videoTracks返回的VideoTrackList对象。
 *   如果SourceBuffer videoTracks list不空，执行以下步骤
     -   让HTMLMediaElement videoTracks list等于HTMLMediaElement中属性videoTracks返回的[VideoTrackList](http://www.w3.org/TR/html5/embedded-content-0.html#videotracklist)对象。
@@ -313,10 +313,10 @@ interface MediaSource : EventTarget {
         +   将[VideoTrack](http://www.w3.org/TR/html5/embedded-content-0.html#videotrack)对象的sourceBuffer属性置空。
         +   如果VideoTrack对象中的selected属性为true,那么将removed enabled video track flag设置为true.
         +   移除HTMLMediaElement videoTracks list中的VideoTrack对象。
-        +   在HTMLMediaElement videoTracks list中[添加](http://www.w3.org/TR/html5/webappapis.html#queue-a-task) [removetrack](http://www.w3.org/TR/html5/embedded-content-0.html#handler-tracklist-onremovetrack)事件([trusted event](http://www.w3.org/TR/html5/infrastructure.html#concept-events-trusted) 不可撤销)。
+        +   [触发](http://www.w3.org/TR/html5/webappapis.html#queue-a-task)HTMLMediaElement videoTracks list中的[removetrack](http://www.w3.org/TR/html5/embedded-content-0.html#handler-tracklist-onremovetrack)事件([trusted event](http://www.w3.org/TR/html5/infrastructure.html#concept-events-trusted) 不可撤销)。
         +   移除SourceBuffer videoTracks list中的VideoTrack对象。
-        +   在SourceBuffer videoTracks list中[添加](http://www.w3.org/TR/html5/webappapis.html#queue-a-task) [removetrack](http://www.w3.org/TR/html5/embedded-content-0.html#handler-tracklist-onremovetrack)事件([trusted event](http://www.w3.org/TR/html5/infrastructure.html#concept-events-trusted) 不可撤销)。
-    -   如果removed enabled video track flag等于true,在HTMLMediaElement videoTracks list中[添加](http://www.w3.org/TR/html5/webappapis.html#queue-a-task) [change](http://www.w3.org/TR/html5/embedded-content-0.html#handler-tracklist-onchange) [事件](http://www.w3.org/TR/html5/webappapis.html#fire-a-simple-event)。
+        +   [触发](http://www.w3.org/TR/html5/webappapis.html#queue-a-task)SourceBuffer videoTracks list中的[removetrack](http://www.w3.org/TR/html5/embedded-content-0.html#handler-tracklist-onremovetrack)事件([trusted event](http://www.w3.org/TR/html5/infrastructure.html#concept-events-trusted) 不可撤销)。
+    -   如果removed enabled video track flag等于true,[触发](http://www.w3.org/TR/html5/webappapis.html#queue-a-task)HTMLMediaElement videoTracks list中的[change](http://www.w3.org/TR/html5/embedded-content-0.html#handler-tracklist-onchange) [事件](http://www.w3.org/TR/html5/webappapis.html#fire-a-simple-event)。
 *   让SourceBuffer textTracks list等于sourceBuffer.textTracks返回的TextTrackList对象。
 *   如果SourceBuffer textTracks list不空，执行以下步骤
     -   让HTMLMediaElement textTracks list等于HTMLMediaElement中属性textTracks返回的[TextTrackList](http://www.w3.org/TR/html5/embedded-content-0.html#texttracklist)对象。
@@ -325,12 +325,12 @@ interface MediaSource : EventTarget {
         +   将[TextTrack](http://www.w3.org/TR/html5/embedded-content-0.html#texttrack)对象的sourceBuffer属性置空。
         +   如果TextTrack对象中的mode属性为true,那么将removed enabled text track flag设置为true.
         +   移除HTMLMediaElement textTracks list中的TextTrack对象。
-        +   在HTMLMediaElement textTracks list中[添加](http://www.w3.org/TR/html5/webappapis.html#queue-a-task) [removetrack](http://www.w3.org/TR/html5/embedded-content-0.html#handler-tracklist-onremovetrack)事件([trusted event](http://www.w3.org/TR/html5/infrastructure.html#concept-events-trusted) 不可撤销)。
+        +   [触发](http://www.w3.org/TR/html5/webappapis.html#queue-a-task)HTMLMediaElement textTracks list中的[removetrack](http://www.w3.org/TR/html5/embedded-content-0.html#handler-tracklist-onremovetrack)事件([trusted event](http://www.w3.org/TR/html5/infrastructure.html#concept-events-trusted) 不可撤销)。
         +   移除SourceBuffer textTracks list中的VideoTrack对象。
-        +   在SourceBuffer textTracks list中[添加](http://www.w3.org/TR/html5/webappapis.html#queue-a-task) [removetrack](http://www.w3.org/TR/html5/embedded-content-0.html#handler-tracklist-onremovetrack)事件([trusted event](http://www.w3.org/TR/html5/infrastructure.html#concept-events-trusted) 不可撤销)。
-    -   如果removed enabled text track flag等于true,在HTMLMediaElement textTracks list中[添加](http://www.w3.org/TR/html5/webappapis.html#queue-a-task) [change](http://www.w3.org/TR/html5/embedded-content-0.html#handler-tracklist-onchange) [事件](http://www.w3.org/TR/html5/webappapis.html#fire-a-simple-event)。
-*   如果activeSourceBuffers中存在sourceBuffer,那么移除之，并在sourceBuffers返回的SourceBufferList中[添加](http://www.w3.org/TR/html5/webappapis.html#queue-a-task)removesourcebuffer[事件](http://www.w3.org/TR/html5/webappapis.html#fire-a-simple-event)。
-*   移除sourceBuffers中的sourceBuffer,并在sourceBuffers返回的SourceBufferList中[添加](http://www.w3.org/TR/html5/webappapis.html#queue-a-task)removesourcebuffer[事件](http://www.w3.org/TR/html5/webappapis.html#fire-a-simple-event)。
+        +   [触发](http://www.w3.org/TR/html5/webappapis.html#queue-a-task)SourceBuffer textTracks list中的[removetrack](http://www.w3.org/TR/html5/embedded-content-0.html#handler-tracklist-onremovetrack)事件([trusted event](http://www.w3.org/TR/html5/infrastructure.html#concept-events-trusted) 不可撤销)。
+    -   如果removed enabled text track flag等于true,[触发](http://www.w3.org/TR/html5/webappapis.html#queue-a-task)HTMLMediaElement textTracks list中的[change](http://www.w3.org/TR/html5/embedded-content-0.html#handler-tracklist-onchange) [事件](http://www.w3.org/TR/html5/webappapis.html#fire-a-simple-event)。
+*   如果activeSourceBuffers中存在sourceBuffer,那么移除之，并[触发](http://www.w3.org/TR/html5/webappapis.html#queue-a-task)sourceBuffers返回的SourceBufferList中的removesourcebuffer[事件](http://www.w3.org/TR/html5/webappapis.html#fire-a-simple-event)。
+*   移除sourceBuffers中的sourceBuffer,并[触发](http://www.w3.org/TR/html5/webappapis.html#queue-a-task)sourceBuffers返回的SourceBufferList中的removesourcebuffer[事件](http://www.w3.org/TR/html5/webappapis.html#fire-a-simple-event)。
 *   释放sourceBuffer的所有资源。
 
 ###2.3 事件总结
@@ -343,13 +343,220 @@ interface MediaSource : EventTarget {
 
 ###2.4 算法
 
-####2.4.1 添加到媒体元素
+####2.4.1 连接到媒体标签
 
-一个MediaSource对象可以添加到媒体元素，通过分配一个MediaSource object URL到媒体元素的src属性，一个MediaSource object URL通过MediaSource对象的createObjectURL()创建。
+一个MediaSource对象可以连接到媒体标签，通过分配一个MediaSource object URL到媒体标签的src属性，一个MediaSource object URL通过MediaSource对象的createObjectURL()创建。
 
 如果[resource fetch algorithm](http://www.w3.org/TR/html5/embedded-content-0.html#concept-media-load-resource)的绝对路径与MediaSource object URL相匹配，那么在执行resource fetch algorithm中的"Perform a potentially CORS-enabled fetch"步骤前，执行以下步骤。
-*   如果readyState不是"closed"，执行resource fetch algorithm中的 "If the media data cannot be fetched at all, due to network errors, causing the user agent to give up trying to fetch the resource"步骤。
+
+*   如果readyState不是"closed"，执行[resource fetch algorithm](http://www.w3.org/TR/html5/embedded-content-0.html#concept-media-load-resource)中的 "If the media data cannot be fetched at all, due to network errors, causing the user agent to give up trying to fetch the resource"步骤。
 *   否则
     -   将readyState置为"open".
-    -   在MediaSource中[添加](http://www.w3.org/TR/html5/webappapis.html#queue-a-task)sourceopen[事件](http://www.w3.org/TR/html5/webappapis.html#fire-a-simple-event)。
-    -   执行resource fetch algorithm中的"Perform a potentially CORS-enabled fetch"步骤
+    -   [触发](http://www.w3.org/TR/html5/webappapis.html#queue-a-task)MediaSource中的sourceopen[事件](http://www.w3.org/TR/html5/webappapis.html#fire-a-simple-event)。
+    -   继续执行[resource fetch algorithm](http://www.w3.org/TR/html5/embedded-content-0.html#concept-media-load-resource)中的"Perform a potentially CORS-enabled fetch"步骤，将[resource fetch algorithm](http://www.w3.org/TR/html5/embedded-content-0.html#concept-media-load-resource)中指向"the download"或者"bytes received"的文字委托到apendBuffer()和appendStream()获得的数据。
+
+####2.4.2 与媒体标签分离
+
+当媒体标签即将过渡为[NETWORK_EMPTY](http://www.w3.org/TR/html5/embedded-content-0.html#dom-media-network_empty),并[触发](http://www.w3.org/TR/html5/webappapis.html#queue-a-task)媒体标签中的[emptied](http://www.w3.org/TR/html5/embedded-content-0.html#event-mediacontroller-emptied) [事件](http://www.w3.org/TR/html5/webappapis.html#fire-a-simple-event)。时间以下步骤将会在任意情况下执行。
+
+*   将属性readyState置为"closed".
+*   将属性duration更新为NaN.
+*   删除activeSourceBuffers里所有的SourceBuffer对象。
+*   [触发](http://www.w3.org/TR/html5/webappapis.html#queue-a-task)activeSourceBuffers中的removesourcebuffer[事件](http://www.w3.org/TR/html5/webappapis.html#fire-a-simple-event)。
+*   删除sourceBuffers里所有的SourceBuffer对象。
+*   [触发](http://www.w3.org/TR/html5/webappapis.html#queue-a-task)sourceBuffers中的removesourcebuffer[事件](http://www.w3.org/TR/html5/webappapis.html#fire-a-simple-event)。
+*   [触发](http://www.w3.org/TR/html5/webappapis.html#queue-a-task)MediaSource中的sourceclose[事件](http://www.w3.org/TR/html5/webappapis.html#fire-a-simple-event)。
+
+####2.4.3 随机定位
+执行以下几个步骤，并作为[seek algorithm](http://www.w3.org/TR/html5/embedded-content-0.html#dom-media-seek)中"Wait until the user agent has established whether or not the media data for the new playback position is available, and, if it is, until it has decoded enough data to play back that position"步骤的一部分。
+
+*   随机定位进度条时，需要的媒体分段包含新的播放位置。
+    -   如果一个或者activeSourceBuffers中的对象缺少指定位置的媒体分段：
+        +   如果HTMLMediaElement.readyState属性比HAVE_METADATA大，那么设置HTMLMediaElement.readyState为HAVE_METADATA。
+        +   媒体标签等待appendBuffer()或者appendStream()执行，然后使用coded frame processing algorithm使得HTMLMediaElement.readyState比HAVE_METADATA大。
+    -   否则继续。
+*   媒体标签重设所有解码器和从initialization segment的合适位置初始化所有数据。
+*   媒体标签从active track buffers中找到新的播放位置最近的随机访问点进行编码。
+*   继续执行seek algorithm中的"Await a stable state"步骤。
+
+####2.4.4 SourceBuffer Monitoring
+####2.4.5 Changes to selected/enabled track state
+####2.4.6  Duration change
+####2.4.7 End of stream algorithm
+
+##3. SourceBuffer对象
+
+```
+WebIDL
+enum AppendMode {
+    "segments",
+    "sequence"
+};
+```
+
+|枚举描述         |               |
+|:-------------:|:-------------:|
+| segments        | 媒体分片中的时间戳决定编码帧播放的位置，媒体分片可以无序添加 |
+| sequence       | 媒体分片被当做是邻接的时间独立的片段，新媒体分片需要紧随先前媒体分配的编码帧。如果需要添加新的媒体分片，设定timestampOffset属性为"sequence"模式，允许媒体分片按照时间线的特定顺序添加，不需要知道每个媒体分片的时间戳信息 |
+
+```
+WebIDL
+interface SourceBuffer : EventTarget {
+                attribute AppendMode          mode;
+    readonly    attribute boolean             updating;
+    readonly    attribute TimeRanges          buffered;
+                attribute double              timestampOffset;
+    readonly    attribute AudioTrackList      audioTracks;
+    readonly    attribute VideoTrackList      videoTracks;
+    readonly    attribute TextTrackList       textTracks;
+                attribute double              appendWindowStart;
+                attribute unrestricted double appendWindowEnd;
+    void appendBuffer (ArrayBuffer data);
+    void appendBuffer (ArrayBufferView data);
+    void appendStream (ReadableStream stream, [EnforceRange] optional unsigned long long maxSize);
+    void abort ();
+    void remove (double start, unrestricted double end);
+                attribute TrackDefaultList    trackDefaults;
+};
+```
+
+###3.1 属性
+
+####appendWindowEnd
+
+>类型：unrestricted double
+
+添加窗口的终止时间戳，初始化为正无穷。
+
+获取该属性时，返回正无穷或者最后设置的值。
+
+设置时，执行以下几个步骤：
+
+*   如果该属性已经从父MediaSource对象的sourceBuffers属性中移除，则抛出异常[InvalidStateError](http://www.w3.org/TR/html5/infrastructure.html#invalidstateerror),并终止以下步骤。
+*   如果updating属性为true,则抛出异常[InvalidStateError](http://www.w3.org/TR/html5/infrastructure.html#invalidstateerror),并终止以下步骤。
+*   如果新的值为NaN，则抛出异常[InvalidAccessError](http://www.w3.org/TR/html5/infrastructure.html#invalidaccesserror),并终止以下步骤。
+*   如果新的值小于等于appendWindowStart,则抛出异常[InvalidAccessError](http://www.w3.org/TR/html5/infrastructure.html#invalidaccesserror),并终止以下步骤。
+*   更新属性值为新值。
+
+####appendWindowStart
+
+>类型：double
+
+添加窗口的开始时间戳，初始化为播放开始时间。
+
+获取该属性时，返回初始值或者最后设置的值。
+
+设置时，执行以下几个步骤：
+
+*   如果该属性已经从父MediaSource对象的sourceBuffers属性中移除，则抛出异常[InvalidStateError](http://www.w3.org/TR/html5/infrastructure.html#invalidstateerror),并终止以下步骤。
+*   如果updating属性为true,则抛出异常[InvalidStateError](http://www.w3.org/TR/html5/infrastructure.html#invalidstateerror),并终止以下步骤。
+*   如果新的值小于0或者大于appendWindowEnd,则抛出异常[InvalidAccessError](http://www.w3.org/TR/html5/infrastructure.html#invalidaccesserror),并终止以下步骤。
+*   更新属性值为新值。
+
+####audioTracks
+
+>类型：AudioTrackList
+>只读
+
+AudioTrack对象的列表通过此对象创建。
+
+####buffered
+
+>类型：TimeRanges
+>只读
+
+指示SourceBuffer已经缓冲的[时间范围](http://www.w3.org/TR/html5/embedded-content-0.html#timeranges)。对象刚建立时，该属性为一个空的TimeRanges对象。
+
+当该对象被读的时候，需要执行以下步骤：
+
+*   如果该属性已经从父MediaSource对象的sourceBuffers属性中移除，则抛出异常[InvalidStateError](http://www.w3.org/TR/html5/infrastructure.html#invalidstateerror),并终止以下步骤。
+*   让highest end time为所有SourceBuffer的track buffers范围中最大的终止时间。
+*   让intersection ranges等于一个[TimeRange](http://www.w3.org/TR/html5/embedded-content-0.html#timeranges)对象，包含一个单一的从0到highest end time的范围。
+*   对于SourceBuffer管理的每一个track buffer，执行以下步骤：
+    -   让track ranges等于当前track buffer的track buffer ranges.
+    -   如果readyState等于"ended",那么设置最后一个track ranges的终止时间为highest end time.
+    -   让new intersection ranges等于intersection ranges和track ranges的交接范围。
+    -   让new intersection ranges代替intersection ranges中的范围。
+*   如果intersection ranges的值和当前属性表示的范围不一致，那么将该属性的值赋给intersection ranges.
+*   返回当前属性的值。
+
+####mode
+
+>类型：AppendMode
+
+控制meidaSegments被处理的方式，当对象初始化之后，通过addSourceBuffer()方法初始化该属性。
+
+获取该属性时，返回初始值或者最后设置的值。
+
+设置时，执行以下几个步骤：
+
+*   如果该对象已经在父MediaSource对象的sourceBuffers中移除，则会抛出异常[InvalidStateError](http://www.w3.org/TR/html5/infrastructure.html#invalidstateerror)，并终止以下步骤。
+*   如果updating属性等于true,则会抛出异常[InvalidStateError](http://www.w3.org/TR/html5/infrastructure.html#invalidstateerror)，并终止以下步骤。
+*   让新的mode等于分配给其的新值。
+*   如果generate timestamps flag等于true,而且新的mode等于"segments",则会抛出异常[InvalidAccessError](http://www.w3.org/TR/html5/infrastructure.html#invalidaccesserror)，并终止以下步骤。
+*   如果父MediaSource对象的readyState属性为"ended",执行以下步骤：
+    -   将该readyState设置为"open".
+    -   [触发](http://www.w3.org/TR/html5/webappapis.html#queue-a-task)父MediaSource对象中的sourceopen[事件](http://www.w3.org/TR/html5/webappapis.html#fire-a-simple-event)。
+*   如果append state等于PARSING_MEDIA_SEGMENT,则会抛出异常[InvalidStateError](http://www.w3.org/TR/html5/infrastructure.html#invalidstateerror)，并终止以下步骤。
+*   如果新的mode等于"sequence",那么设置group start timestamp为group end timestamp.
+*   更新属性为新的mode值。
+
+####textTracks
+
+>类型：TextTrackList
+>只读
+
+TextTrack对象的列表被该对象创建。
+
+####timestampOffset
+
+>类型：double
+
+控制接下来需要添加到SourceBuffer中的媒体分段的时间偏移量，初始化为0。
+
+获取该属性时，返回初始值或者最后设置的值。
+
+设置时，执行以下几个步骤：
+
+*   让新的timestamp值等于设置的新值。
+*   如果该对象已经在父MediaSource对象的sourceBuffers中移除，则会抛出异常[InvalidStateError](http://www.w3.org/TR/html5/infrastructure.html#invalidstateerror)，并终止以下步骤。
+*   如果updating属性等于true,则会抛出异常[InvalidStateError](http://www.w3.org/TR/html5/infrastructure.html#invalidstateerror)，并终止以下步骤。
+*   如果父MediaSource对象的readyState属性为"ended",执行以下步骤：
+    -   将该readyState设置为"open".
+    -   [触发](http://www.w3.org/TR/html5/webappapis.html#queue-a-task)父MediaSource对象中的sourceopen[事件](http://www.w3.org/TR/html5/webappapis.html#fire-a-simple-event)。
+*   如果append state等于PARSING_MEDIA_SEGMENT,则会抛出异常[InvalidStateError](http://www.w3.org/TR/html5/infrastructure.html#invalidstateerror)，并终止以下步骤。
+*   如果新的mode等于"sequence",那么设置group start timestamp为group end timestamp.
+*   更新属性为新的timestamp值。
+
+####trackDefaults
+
+>类型：TrackDefaultList
+
+当initialization segment received algorithm需要创建track对象时，如果initialization segment的种类、标签或者语言等信息不可用，然后可以用该属性的默认轨道。初始化为空的TrackDefaultList对象。
+
+获取该属性时，返回初始值或者最后设置的值。
+
+设置时，执行以下几个步骤：
+
+*   如果该对象已经在父MediaSource对象的sourceBuffers中移除，则会抛出异常[InvalidStateError](http://www.w3.org/TR/html5/infrastructure.html#invalidstateerror)，并终止以下步骤。
+*   如果updating属性等于true,则会抛出异常[InvalidStateError](http://www.w3.org/TR/html5/infrastructure.html#invalidstateerror)，并终止以下步骤。
+*   更新属性为新的值。
+
+####updating
+
+>boolean
+>只读
+
+表明apendBuffer(),apendStream(),或者remove()操作是否仍在异步执行，SourceBuffer对象创建时，初始化false.
+
+videoTracks
+
+>VideoTrackList
+>只读
+
+videoTrack对象的列表被该对象创建。
+
+###3.2 方法
+
+
+
