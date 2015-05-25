@@ -1,0 +1,1940 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><style>body {
+  width: 45em;
+  border: 1px solid #ddd;
+  outline: 1300px solid #fff;
+  margin: 16px auto;
+}
+
+body .markdown-body
+{
+  padding: 30px;
+}
+
+@font-face {
+  font-family: fontawesome-mini;
+  src: url(data:font/woff;charset=utf-8;base64,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) format('woff');
+}
+
+@font-face {
+  font-family: octicons-anchor;
+  src: url(data:font/woff;charset=utf-8;base64,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) format('woff');
+}
+
+.markdown-body {
+  font-family: sans-serif;
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+  color: #333333;
+  overflow: hidden;
+  font-family: "Helvetica Neue", Helvetica, "Segoe UI", Arial, freesans, sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  word-wrap: break-word;
+}
+
+.markdown-body a {
+  background: transparent;
+}
+
+.markdown-body a:active,
+.markdown-body a:hover {
+  outline: 0;
+}
+
+.markdown-body b,
+.markdown-body strong {
+  font-weight: bold;
+}
+
+.markdown-body mark {
+  background: #ff0;
+  color: #000;
+  font-style: italic;
+  font-weight: bold;
+}
+
+.markdown-body sub,
+.markdown-body sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+.markdown-body sup {
+  top: -0.5em;
+}
+.markdown-body sub {
+  bottom: -0.25em;
+}
+
+.markdown-body h1 {
+  font-size: 2em;
+  margin: 0.67em 0;
+}
+
+.markdown-body img {
+  border: 0;
+}
+
+.markdown-body hr {
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+  height: 0;
+}
+
+.markdown-body pre {
+  overflow: auto;
+}
+
+.markdown-body code,
+.markdown-body kbd,
+.markdown-body pre,
+.markdown-body samp {
+  font-family: monospace, monospace;
+  font-size: 1em;
+}
+
+.markdown-body input {
+  color: inherit;
+  font: inherit;
+  margin: 0;
+}
+
+.markdown-body html input[disabled] {
+  cursor: default;
+}
+
+.markdown-body input {
+  line-height: normal;
+}
+
+.markdown-body input[type="checkbox"] {
+  box-sizing: border-box;
+  padding: 0;
+}
+
+.markdown-body table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+.markdown-body td,
+.markdown-body th {
+  padding: 0;
+}
+
+.markdown-body .codehilitetable {
+  border: 0;
+  border-spacing: 0;
+}
+
+.markdown-body .codehilitetable tr {
+  border: 0;
+}
+
+.markdown-body .codehilitetable pre,
+.markdown-body .codehilitetable div.codehilite {
+  margin: 0;
+}
+
+.markdown-body .linenos,
+.markdown-body .code,
+.markdown-body .codehilitetable td {
+  border: 0;
+  padding: 0;
+}
+
+.markdown-body td:not(.linenos) .linenodiv {
+  padding: 0 !important;
+}
+
+.markdown-body .code {
+  width: 100%;
+}
+
+.markdown-body .linenos div pre,
+.markdown-body .linenodiv pre,
+.markdown-body .linenodiv {
+  border: 0;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  border-radius: 0;
+  -webkit-border-top-left-radius: 3px;
+  -webkit-border-bottom-left-radius: 3px;
+  -moz-border-radius-topleft: 3px;
+  -moz-border-radius-bottomleft: 3px;
+  border-top-left-radius: 3px;
+  border-bottom-left-radius: 3px;
+}
+
+.markdown-body .code div pre,
+.markdown-body .code div {
+  border: 0;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  border-radius: 0;
+  -webkit-border-top-right-radius: 3px;
+  -webkit-border-bottom-right-radius: 3px;
+  -moz-border-radius-topright: 3px;
+  -moz-border-radius-bottomright: 3px;
+  border-top-right-radius: 3px;
+  border-bottom-right-radius: 3px;
+}
+
+.markdown-body * {
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.markdown-body input {
+  font: 13px Helvetica, arial, freesans, clean, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol";
+  line-height: 1.4;
+}
+
+.markdown-body a {
+  color: #4183c4;
+  text-decoration: none;
+}
+
+.markdown-body a:hover,
+.markdown-body a:focus,
+.markdown-body a:active {
+  text-decoration: underline;
+}
+
+.markdown-body hr {
+  height: 0;
+  margin: 15px 0;
+  overflow: hidden;
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid #ddd;
+}
+
+.markdown-body hr:before,
+.markdown-body hr:after {
+  display: table;
+  content: " ";
+}
+
+.markdown-body hr:after {
+  clear: both;
+}
+
+.markdown-body h1,
+.markdown-body h2,
+.markdown-body h3,
+.markdown-body h4,
+.markdown-body h5,
+.markdown-body h6 {
+  margin-top: 15px;
+  margin-bottom: 15px;
+  line-height: 1.1;
+}
+
+.markdown-body h1 {
+  font-size: 30px;
+}
+
+.markdown-body h2 {
+  font-size: 21px;
+}
+
+.markdown-body h3 {
+  font-size: 16px;
+}
+
+.markdown-body h4 {
+  font-size: 14px;
+}
+
+.markdown-body h5 {
+  font-size: 12px;
+}
+
+.markdown-body h6 {
+  font-size: 11px;
+}
+
+.markdown-body blockquote {
+  margin: 0;
+}
+
+.markdown-body ul,
+.markdown-body ol {
+  padding: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.markdown-body ol ol,
+.markdown-body ul ol {
+  list-style-type: lower-roman;
+}
+
+.markdown-body ul ul ol,
+.markdown-body ul ol ol,
+.markdown-body ol ul ol,
+.markdown-body ol ol ol {
+  list-style-type: lower-alpha;
+}
+
+.markdown-body dd {
+  margin-left: 0;
+}
+
+.markdown-body code,
+.markdown-body pre,
+.markdown-body samp {
+  font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  font-size: 12px;
+}
+
+.markdown-body pre {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.markdown-body kbd {
+  background-color: #e7e7e7;
+  background-image: -moz-linear-gradient(#fefefe, #e7e7e7);
+  background-image: -webkit-linear-gradient(#fefefe, #e7e7e7);
+  background-image: linear-gradient(#fefefe, #e7e7e7);
+  background-repeat: repeat-x;
+  border-radius: 2px;
+  border: 1px solid #cfcfcf;
+  color: #000;
+  padding: 3px 5px;
+  line-height: 10px;
+  font: 11px Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  display: inline-block;
+}
+
+.markdown-body>*:first-child {
+  margin-top: 0 !important;
+}
+
+.markdown-body>*:last-child {
+  margin-bottom: 0 !important;
+}
+
+.markdown-body .headeranchor-link {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  display: block;
+  padding-right: 6px;
+  padding-left: 30px;
+  margin-left: -30px;
+}
+
+.markdown-body .headeranchor-link:focus {
+  outline: none;
+}
+
+.markdown-body h1,
+.markdown-body h2,
+.markdown-body h3,
+.markdown-body h4,
+.markdown-body h5,
+.markdown-body h6 {
+  position: relative;
+  margin-top: 1em;
+  margin-bottom: 16px;
+  font-weight: bold;
+  line-height: 1.4;
+}
+
+.markdown-body h1 .headeranchor,
+.markdown-body h2 .headeranchor,
+.markdown-body h3 .headeranchor,
+.markdown-body h4 .headeranchor,
+.markdown-body h5 .headeranchor,
+.markdown-body h6 .headeranchor {
+  display: none;
+  color: #000;
+  vertical-align: middle;
+}
+
+.markdown-body h1:hover .headeranchor-link,
+.markdown-body h2:hover .headeranchor-link,
+.markdown-body h3:hover .headeranchor-link,
+.markdown-body h4:hover .headeranchor-link,
+.markdown-body h5:hover .headeranchor-link,
+.markdown-body h6:hover .headeranchor-link {
+  height: 1em;
+  padding-left: 8px;
+  margin-left: -30px;
+  line-height: 1;
+  text-decoration: none;
+}
+
+.markdown-body h1:hover .headeranchor-link .headeranchor,
+.markdown-body h2:hover .headeranchor-link .headeranchor,
+.markdown-body h3:hover .headeranchor-link .headeranchor,
+.markdown-body h4:hover .headeranchor-link .headeranchor,
+.markdown-body h5:hover .headeranchor-link .headeranchor,
+.markdown-body h6:hover .headeranchor-link .headeranchor {
+  display: inline-block;
+}
+
+.markdown-body h1 {
+  padding-bottom: 0.3em;
+  font-size: 2.25em;
+  line-height: 1.2;
+  border-bottom: 1px solid #eee;
+}
+
+.markdown-body h2 {
+  padding-bottom: 0.3em;
+  font-size: 1.75em;
+  line-height: 1.225;
+  border-bottom: 1px solid #eee;
+}
+
+.markdown-body h3 {
+  font-size: 1.5em;
+  line-height: 1.43;
+}
+
+.markdown-body h4 {
+  font-size: 1.25em;
+}
+
+.markdown-body h5 {
+  font-size: 1em;
+}
+
+.markdown-body h6 {
+  font-size: 1em;
+  color: #777;
+}
+
+.markdown-body p,
+.markdown-body blockquote,
+.markdown-body ul,
+.markdown-body ol,
+.markdown-body dl,
+.markdown-body table,
+.markdown-body pre,
+.markdown-body .admonition {
+  margin-top: 0;
+  margin-bottom: 16px;
+}
+
+.markdown-body hr {
+  height: 4px;
+  padding: 0;
+  margin: 16px 0;
+  background-color: #e7e7e7;
+  border: 0 none;
+}
+
+.markdown-body ul,
+.markdown-body ol {
+  padding-left: 2em;
+}
+
+.markdown-body ul ul,
+.markdown-body ul ol,
+.markdown-body ol ol,
+.markdown-body ol ul {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.markdown-body li>p {
+  margin-top: 16px;
+}
+
+.markdown-body dl {
+  padding: 0;
+}
+
+.markdown-body dl dt {
+  padding: 0;
+  margin-top: 16px;
+  font-size: 1em;
+  font-style: italic;
+  font-weight: bold;
+}
+
+.markdown-body dl dd {
+  padding: 0 16px;
+  margin-bottom: 16px;
+}
+
+.markdown-body blockquote {
+  padding: 0 15px;
+  color: #777;
+  border-left: 4px solid #ddd;
+}
+
+.markdown-body blockquote>:first-child {
+  margin-top: 0;
+}
+
+.markdown-body blockquote>:last-child {
+  margin-bottom: 0;
+}
+
+.markdown-body table {
+  display: block;
+  width: 100%;
+  overflow: auto;
+  word-break: normal;
+  word-break: keep-all;
+}
+
+.markdown-body table th {
+  font-weight: bold;
+}
+
+.markdown-body table th,
+.markdown-body table td {
+  padding: 6px 13px;
+  border: 1px solid #ddd;
+}
+
+.markdown-body table tr {
+  background-color: #fff;
+  border-top: 1px solid #ccc;
+}
+
+.markdown-body table tr:nth-child(2n) {
+  background-color: #f8f8f8;
+}
+
+.markdown-body img {
+  max-width: 100%;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.markdown-body code,
+.markdown-body samp {
+  padding: 0;
+  padding-top: 0.2em;
+  padding-bottom: 0.2em;
+  margin: 0;
+  font-size: 85%;
+  background-color: rgba(0,0,0,0.04);
+  border-radius: 3px;
+}
+
+.markdown-body code:before,
+.markdown-body code:after {
+  letter-spacing: -0.2em;
+  content: "\00a0";
+}
+
+.markdown-body pre>code {
+  padding: 0;
+  margin: 0;
+  font-size: 100%;
+  word-break: normal;
+  white-space: pre;
+  background: transparent;
+  border: 0;
+}
+
+.markdown-body .codehilite {
+  margin-bottom: 16px;
+}
+
+.markdown-body .codehilite pre,
+.markdown-body pre {
+  padding: 16px;
+  overflow: auto;
+  font-size: 85%;
+  line-height: 1.45;
+  background-color: #f7f7f7;
+  border-radius: 3px;
+}
+
+.markdown-body .codehilite pre {
+  margin-bottom: 0;
+  word-break: normal;
+}
+
+.markdown-body pre {
+  word-wrap: normal;
+}
+
+.markdown-body pre code {
+  display: inline;
+  max-width: initial;
+  padding: 0;
+  margin: 0;
+  overflow: initial;
+  line-height: inherit;
+  word-wrap: normal;
+  background-color: transparent;
+  border: 0;
+}
+
+.markdown-body pre code:before,
+.markdown-body pre code:after {
+  content: normal;
+}
+
+/* Admonition */
+.markdown-body .admonition {
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  position: relative;
+  border-radius: 3px;
+  border: 1px solid #e0e0e0;
+  border-left: 6px solid #333;
+  padding: 10px 10px 10px 30px;
+}
+
+.markdown-body .admonition table {
+  color: #333;
+}
+
+.markdown-body .admonition p {
+  padding: 0;
+}
+
+.markdown-body .admonition-title {
+  font-weight: bold;
+  margin: 0;
+}
+
+.markdown-body .admonition>.admonition-title {
+  color: #333;
+}
+
+.markdown-body .attention>.admonition-title {
+  color: #a6d796;
+}
+
+.markdown-body .caution>.admonition-title {
+  color: #d7a796;
+}
+
+.markdown-body .hint>.admonition-title {
+  color: #96c6d7;
+}
+
+.markdown-body .danger>.admonition-title {
+  color: #c25f77;
+}
+
+.markdown-body .question>.admonition-title {
+  color: #96a6d7;
+}
+
+.markdown-body .note>.admonition-title {
+  color: #d7c896;
+}
+
+.markdown-body .admonition:before,
+.markdown-body .attention:before,
+.markdown-body .caution:before,
+.markdown-body .hint:before,
+.markdown-body .danger:before,
+.markdown-body .question:before,
+.markdown-body .note:before {
+  font: normal normal 16px fontawesome-mini;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  line-height: 1.5;
+  color: #333;
+  position: absolute;
+  left: 0;
+  top: 0;
+  padding-top: 10px;
+  padding-left: 10px;
+}
+
+.markdown-body .admonition:before {
+  content: "\f056\00a0";
+  color: 333;
+}
+
+.markdown-body .attention:before {
+  content: "\f058\00a0";
+  color: #a6d796;
+}
+
+.markdown-body .caution:before {
+  content: "\f06a\00a0";
+  color: #d7a796;
+}
+
+.markdown-body .hint:before {
+  content: "\f05a\00a0";
+  color: #96c6d7;
+}
+
+.markdown-body .danger:before {
+  content: "\f057\00a0";
+  color: #c25f77;
+}
+
+.markdown-body .question:before {
+  content: "\f059\00a0";
+  color: #96a6d7;
+}
+
+.markdown-body .note:before {
+  content: "\f040\00a0";
+  color: #d7c896;
+}
+
+.markdown-body .admonition::after {
+  content: normal;
+}
+
+.markdown-body .attention {
+  border-left: 6px solid #a6d796;
+}
+
+.markdown-body .caution {
+  border-left: 6px solid #d7a796;
+}
+
+.markdown-body .hint {
+  border-left: 6px solid #96c6d7;
+}
+
+.markdown-body .danger {
+  border-left: 6px solid #c25f77;
+}
+
+.markdown-body .question {
+  border-left: 6px solid #96a6d7;
+}
+
+.markdown-body .note {
+  border-left: 6px solid #d7c896;
+}
+
+.markdown-body .admonition>*:first-child {
+  margin-top: 0 !important;
+}
+
+.markdown-body .admonition>*:last-child {
+  margin-bottom: 0 !important;
+}
+
+/* progress bar*/
+.markdown-body .progress {
+  display: block;
+  width: 300px;
+  margin: 10px 0;
+  height: 24px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  background-color: #ededed;
+  position: relative;
+  box-shadow: inset -1px 1px 3px rgba(0, 0, 0, .1);
+}
+
+.markdown-body .progress-label {
+  position: absolute;
+  text-align: center;
+  font-weight: bold;
+  width: 100%; margin: 0;
+  line-height: 24px;
+  color: #333;
+  text-shadow: 1px 1px 0 #fefefe, -1px -1px 0 #fefefe, -1px 1px 0 #fefefe, 1px -1px 0 #fefefe, 0 1px 0 #fefefe, 0 -1px 0 #fefefe, 1px 0 0 #fefefe, -1px 0 0 #fefefe, 1px 1px 2px #000;
+  -webkit-font-smoothing: antialiased !important;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.markdown-body .progress-bar {
+  height: 24px;
+  float: left;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  background-color: #96c6d7;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .5), inset 0 -1px 0 rgba(0, 0, 0, .1);
+  background-size: 30px 30px;
+  background-image: -webkit-linear-gradient(
+    135deg, rgba(255, 255, 255, .4) 27%,
+    transparent 27%,
+    transparent 52%, rgba(255, 255, 255, .4) 52%,
+    rgba(255, 255, 255, .4) 77%,
+    transparent 77%, transparent
+  );
+  background-image: -moz-linear-gradient(
+    135deg,
+    rgba(255, 255, 255, .4) 27%, transparent 27%,
+    transparent 52%, rgba(255, 255, 255, .4) 52%,
+    rgba(255, 255, 255, .4) 77%, transparent 77%,
+    transparent
+  );
+  background-image: -ms-linear-gradient(
+    135deg,
+    rgba(255, 255, 255, .4) 27%, transparent 27%,
+    transparent 52%, rgba(255, 255, 255, .4) 52%,
+    rgba(255, 255, 255, .4) 77%, transparent 77%,
+    transparent
+  );
+  background-image: -o-linear-gradient(
+    135deg,
+    rgba(255, 255, 255, .4) 27%, transparent 27%,
+    transparent 52%, rgba(255, 255, 255, .4) 52%,
+    rgba(255, 255, 255, .4) 77%, transparent 77%,
+    transparent
+  );
+  background-image: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, .4) 27%, transparent 27%,
+    transparent 52%, rgba(255, 255, 255, .4) 52%,
+    rgba(255, 255, 255, .4) 77%, transparent 77%,
+    transparent
+  );
+}
+
+.markdown-body .progress-100plus .progress-bar {
+  background-color: #a6d796;
+}
+
+.markdown-body .progress-80plus .progress-bar {
+  background-color: #c6d796;
+}
+
+.markdown-body .progress-60plus .progress-bar {
+  background-color: #d7c896;
+}
+
+.markdown-body .progress-40plus .progress-bar {
+  background-color: #d7a796;
+}
+
+.markdown-body .progress-20plus .progress-bar {
+  background-color: #d796a6;
+}
+
+.markdown-body .progress-0plus .progress-bar {
+  background-color: #c25f77;
+}
+
+.markdown-body .candystripe-animate .progress-bar{
+  -webkit-animation: animate-stripes 3s linear infinite;
+  -moz-animation: animate-stripes 3s linear infinite;
+  animation: animate-stripes 3s linear infinite;
+}
+
+@-webkit-keyframes animate-stripes {
+  0% {
+    background-position: 0 0;
+  }
+
+  100% {
+    background-position: 60px 0;
+  }
+}
+
+@-moz-keyframes animate-stripes {
+  0% {
+    background-position: 0 0;
+  }
+
+  100% {
+    background-position: 60px 0;
+  }
+}
+
+@keyframes animate-stripes {
+  0% {
+    background-position: 0 0;
+  }
+
+  100% {
+    background-position: 60px 0;
+  }
+}
+
+.markdown-body .gloss .progress-bar {
+  box-shadow:
+    inset 0 4px 12px rgba(255, 255, 255, .7),
+    inset 0 -12px 0 rgba(0, 0, 0, .05);
+}
+
+/* Multimarkdown Critic Blocks */
+.markdown-body .critic_mark {
+  background: #ff0;
+}
+
+.markdown-body .critic_delete {
+  color: #c82829;
+  text-decoration: line-through;
+}
+
+.markdown-body .critic_insert {
+  color: #718c00 ;
+  text-decoration: underline;
+}
+
+.markdown-body .critic_comment {
+  color: #8e908c;
+  font-style: italic;
+}
+
+.markdown-body .headeranchor {
+  font: normal normal 16px octicons-anchor;
+  line-height: 1;
+  display: inline-block;
+  text-decoration: none;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.headeranchor:before {
+  content: '\f05c';
+}
+
+.markdown-body .task-list-item {
+  list-style-type: none;
+}
+
+.markdown-body .task-list-item+.task-list-item {
+  margin-top: 3px;
+}
+
+.markdown-body .task-list-item input {
+  margin: 0 4px 0.25em -20px;
+  vertical-align: middle;
+}
+
+/* Media */
+@media only screen and (min-width: 480px) {
+  .markdown-body {
+    font-size:14px;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .markdown-body {
+    font-size:16px;
+  }
+}
+
+@media print {
+  .markdown-body * {
+    background: transparent !important;
+    color: black !important;
+    filter:none !important;
+    -ms-filter: none !important;
+  }
+
+  .markdown-body {
+    font-size:12pt;
+    max-width:100%;
+    outline:none;
+    border: 0;
+  }
+
+  .markdown-body a,
+  .markdown-body a:visited {
+    text-decoration: underline;
+  }
+
+  .markdown-body .headeranchor-link {
+    display: none;
+  }
+
+  .markdown-body a[href]:after {
+    content: " (" attr(href) ")";
+  }
+
+  .markdown-body abbr[title]:after {
+    content: " (" attr(title) ")";
+  }
+
+  .markdown-body .ir a:after,
+  .markdown-body a[href^="javascript:"]:after,
+  .markdown-body a[href^="#"]:after {
+    content: "";
+  }
+
+  .markdown-body pre {
+    white-space: pre;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+  }
+
+  .markdown-body pre,
+  .markdown-body blockquote {
+    border: 1px solid #999;
+    padding-right: 1em;
+    page-break-inside: avoid;
+  }
+
+  .markdown-body .progress,
+  .markdown-body .progress-bar {
+    -moz-box-shadow: none;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+  }
+
+  .markdown-body .progress {
+    border: 1px solid #ddd;
+  }
+
+  .markdown-body .progress-bar {
+    height: 22px;
+    border-right: 1px solid #ddd;
+  }
+
+  .markdown-body tr,
+  .markdown-body img {
+    page-break-inside: avoid;
+  }
+
+  .markdown-body img {
+    max-width: 100% !important;
+  }
+
+  .markdown-body p,
+  .markdown-body h2,
+  .markdown-body h3 {
+    orphans: 3;
+    widows: 3;
+  }
+
+  .markdown-body h2,
+  .markdown-body h3 {
+    page-break-after: avoid;
+  }
+}
+</style><title>README</title></head><body><article class="markdown-body"><h1 id="media-source-extensions"><a name="user-content-media-source-extensions" href="#media-source-extensions" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Media Source Extensions</h1>
+<blockquote>
+<p>W3C Candidate Recommendation<br />
+31 MARCH 2015</p>
+</blockquote>
+<h2 id="infomation"><a name="user-content-infomation" href="#infomation" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Infomation</h2>
+<blockquote>
+<p>最新发布版本：<br />
+<a href="http://www.w3.org/TR/media-source/">http://www.w3.org/TR/media-source/</a><br />
+最新编辑者草案：<br />
+<a href="http://w3c.github.io/media-source/">http://w3c.github.io/media-source/</a><br />
+以前的版本：<br />
+<a href="http://www.w3.org/TR/2014/CR-media-source-20140717/">http://www.w3.org/TR/2014/CR-media-source-20140717/</a><br />
+编辑者：<br />
+Aaron Colwell, Google Inc.<br />
+Adrian Bateman, Microsoft Corporation<br />
+Mark Watson, Netflix Inc.<br />
+翻译者：<br />
+Hanzeil. hanzeil.xyz. <a href="mailto:tang5266868@gmail.com">tang5266868@gmail.com</a>  </p>
+</blockquote>
+<h2 id="abstract"><a name="user-content-abstract" href="#abstract" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Abstract</h2>
+<p>Media Source API继承于HTMLMediaElement，它允许JavaScript生成可以播放的媒体流，使许多应用场景更加便利，比如自适应流及时移(adaptive streaming and time shifting live streams).<br />
+如果你想对这篇W3C的文档提出建议或者提交bug，请点击<a href="https://www.w3.org/Bugs/Public/enter_bug.cgi?product=HTML%20WG&amp;component=Media%20Source%20Extensions&amp;short_desc=%5BMSE%5D%20">our public bug database</a>.</p>
+<h2 id="status-of-this-document"><a name="user-content-status-of-this-document" href="#status-of-this-document" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Status of this Document</h2>
+<p>这一章节描述了当前发布的文档的状态，其他的文档可能会代替当前文档。获取当前的W3C发布列表和这篇技术文档的最新版本，请点击<a href="http://www.w3.org/TR/">W3C技术报告索引</a>。  </p>
+<p>工作组维护了<a href="http://w3.org/brief/Mjcw">一个编辑者并未试图解决的bug列表</a>，该草案突出了一些工作组将要讨论的未解决问题。这些问题还没有决策，包括他们是否具有有效的结果。  </p>
+<p>该规范没有<a href="http://www.w3.org/wiki/ImplementationReport">实现报告</a>。  </p>
+<p>实现者们应该注意，该规范并不稳定，若没有加入该讨论组，下个版本可能跟当前版本不兼容。感兴趣的实现者在实现之前，应加入到下面提到的邮件列表，参加讨论。  </p>
+<p>由于缺乏实现，下面的特性有一定风险会被移除。<a href="http://www.w3.org/TR/media-source/#widl-VideoPlaybackQuality-totalFrameDelay">TotalFrameDelay</a>  </p>
+<p>该文档已经被<a href="http://www.w3.org/html/wg/">HTML工作组</a>作为W3C候选标准发布了，该文档旨在成为W3C标准，如果您对本文提出意见，请发送给 <a href="mailto:public-html-media@w3.org">public-html-media@w3.org</a>，W3C发布了该候选标准，说明该文档是稳定的，并鼓励开发者社区实现。该候选推荐很可能会提前发布，最早可能在2015年4月28日。欢迎所有评论。  </p>
+<p>作为W3C候选标准发布并不意味着W3C成员对其支持。这是一个草案，可能会随时更新、替换、丢弃。引用此文档做其他工作并不合适。  </p>
+<p>工作组制定该文档，并在<a href="http://www.w3.org/Consortium/Patent-Policy-20040205/">5 February 2014 W3C Patent Policy</a>下运行。W3C维护一个任何专利公开公示名单。该网页还包括用于公开的专利说明书。按照<a href="http://www.w3.org/Consortium/Patent-Policy-20040205/#sec-Disclosure">W3C专利政策的第六章</a>，拥有专利知识的个人，必须公布包含<a href="http://www.w3.org/Consortium/Patent-Policy-20040205/#def-essential">Essential Claim</a>的信息。  </p>
+<p>该文档被<a href="http://www.w3.org/2014/Process-20140801/">1 August 2014 W3C Process Document</a>所管理。  </p>
+<h2 id="1"><a name="user-content-1" href="#1" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>1. 简介</h2>
+<p>本规范允许JavaScript向<code>&lt;video&gt;</code>和<code>&lt;audio&gt;</code>标签动态构造媒体流，它定义对象允许JavaScript加载媒体分片转化为<a href="http://www.w3.org/TR/html5/embedded-content-0.html#htmlmediaelement">HTMLMediaElement</a>.同时，通过一种缓冲模型也可以实现用户代理（浏览器）播放无序被添加的媒体分片。在<a href="http://www.w3.org/TR/media-source/#bib-MSE-REGISTRY">MSE-REGISTRY</a>中定义了媒体流的格式规范。<br />
+<img alt="pieline_model" src="http://www.w3.org/TR/media-source/pipeline_model.png" /></p>
+<h3 id="11"><a name="user-content-11" href="#11" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>1.1 目标</h3>
+<p>这篇规范设计了以下目标：</p>
+<ul>
+<li>允许JavaScript独立构建媒体流；</li>
+<li>定义了一种拼接模型和缓冲模型，使得一些应用场景更为便利，比如自适应流及时移，时移，视频编辑等；</li>
+<li>最大限度减少JavaScript解析媒体的使用；</li>
+<li>尽可能使用浏览器缓存；</li>
+<li>不需要任何媒体格式和编解码器的支持。</li>
+</ul>
+<h3 id="12"><a name="user-content-12" href="#12" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>1.2 定义</h3>
+<h4 id="active-track-buffers"><a name="user-content-active-track-buffers" href="#active-track-buffers" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Active Track Buffers（轨道缓冲器）</h4>
+<p>active Track Buffers可以提供<a href="http://www.w3.org/TR/html5/embedded-content-0.html#dom-audiotrack-enabled">enabled</a> <a href="http://www.w3.org/TR/html5/embedded-content-0.html#dom-media-audiotracks">audioTracks</a>,  <a href="http://www.w3.org/TR/html5/embedded-content-0.html#dom-videotrack-selected">selected</a> <a href="http://www.w3.org/TR/html5/embedded-content-0.html#dom-media-videotracks">videoTracks</a>和 &ldquo;<a href="http://www.w3.org/TR/html5/embedded-content-0.html#dom-texttrack-showing">showing</a>&rdquo; 或者 &ldquo;<a href="http://www.w3.org/TR/html5/embedded-content-0.html#dom-texttrack-hidden">hidden</a>&rdquo; <a href="http://www.w3.org/TR/html5/embedded-content-0.html#dom-media-texttracks">textTracks</a>的编码帧的缓冲，在activeSourceBuffers属性里，与SourceBuffer对象相关联。  </p>
+<h4 id="append-window"><a name="user-content-append-window" href="#append-window" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>append Window（添加窗口）</h4>
+<p>当添加媒体分片时，用显示时间戳来界定编码帧。append Window具有一个单一连续时间内的开始时间和结束时间，编码帧的显示时间戳如果属于此范围，则允许添加到SourceBuffer中，而此范围外的编码帧会被过滤。append Window的开始时间和结束时间由属性appendWindow-Start和appendWindowEnd属性控制。  </p>
+<h4 id="coded-frame"><a name="user-content-coded-frame" href="#coded-frame" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Coded Frame（编码帧）</h4>
+<p>一个媒体数据单元，具有一个显示时间戳，一个解码时间戳，和一个编码帧长。  </p>
+<h4 id="coded-frame-duration"><a name="user-content-coded-frame-duration" href="#coded-frame-duration" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Coded Frame Duration（编码帧长）</h4>
+<p>编码帧的时间长度。对于视频和文字，时长表示视频帧的长度或者文字是否应该展示。对于音频，时长表示编码帧内所有音频采样的和。比如，如果一个音频帧包含441个采样，频率为44100Hz，那么编码帧长是10毫秒。  </p>
+<h4 id="coded-frame-end-timestamp"><a name="user-content-coded-frame-end-timestamp" href="#coded-frame-end-timestamp" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Coded Frame End Timestamp（编码帧结束时间戳）</h4>
+<p>编码帧显示时间戳和它的帧长之和。它表示显示时间戳紧随的编码帧。</p>
+<h4 id="coded-frame-group"><a name="user-content-coded-frame-group" href="#coded-frame-group" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Coded Frame Group（编码帧组）</h4>
+<p>编码帧组是一组邻接的、单调递增的解码时间戳且没有任何间隙的编码帧。如果通过coded frame processing算法检测到不连续的帧，那么abort()方法将会触发，而且开始新的编码帧组。  </p>
+<h4 id="decode-timestamp"><a name="user-content-decode-timestamp" href="#decode-timestamp" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Decode Timestamp（解码时间戳）</h4>
+<p>假设帧需要立即解码和展现（该帧和任何依赖它的帧），解码时间戳表示最新需要解码的帧的时间（等同于显示时间戳最早的帧，在显示顺序中，它是依赖此帧的）。如果帧可以在显示顺序之外被解码，则解码时间戳必须存在于或衍生于字节流，如果不是，用户代理必须运行append error算法并将decode error参数设置为true。如果解码时间戳不能在显示顺序之外解码，而且不存在于字节流，那么解码时间戳等同于显示时间戳。  </p>
+<h4 id="displayed-frame-delay"><a name="user-content-displayed-frame-delay" href="#displayed-frame-delay" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Displayed Frame Delay（展示帧延迟）</h4>
+<p>帧的理论显示时间和实际时间（双精度类型，以秒为单位，四舍五入的离显示刷新间隔最接近的时间）之间的延迟，该延迟大于等于0，因为帧不会在它应该显示的时间之前显示。如果延迟大于0，说明可能存在播放抖动和A/V同步丢失。  </p>
+<h4 id="initialization-segment"><a name="user-content-initialization-segment" href="#initialization-segment" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Initialization Segment（初始化分片）</h4>
+<p>包含所有初始化信息的一个字节序列，可以解码剩下所有的媒体分片。它包含初始化解码信息，多轨道分片的轨道ID，和相应的时间偏移量。 </p>
+<blockquote>
+<p>在字节流格式登记文档<a href="http://www.w3.org/TR/media-source/#bib-MSE-REGISTRY">MSE-REGISTRY</a>中的<a href="http://www.w3.org/TR/media-source/#byte-stream-format-specs">byte stream format specifacations</a>文档包含特定格式的用例。 </p>
+</blockquote>
+<h4 id="media-segment"><a name="user-content-media-segment" href="#media-segment" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Media Segment（媒体分片）</h4>
+<p>一段封装的、具有时间戳的一部分媒体数据，媒体分片跟最先添加的初始化分片相关联。</p>
+<blockquote>
+<p>在字节流格式登记文档<a href="http://www.w3.org/TR/media-source/#bib-MSE-REGISTRY">MSE-REGISTRY</a>中的<a href="http://www.w3.org/TR/media-source/#byte-stream-format-specs">byte stream format specifacations</a>文档包含特定格式的用例。</p>
+</blockquote>
+<h4 id="mediasource-object-urlmediasourceurl"><a name="user-content-mediasource-object-urlmediasourceurl" href="#mediasource-object-urlmediasourceurl" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>MediaSource object URL（MeDiaSource对象URL）</h4>
+<p>MediaSource对象的URL是一个Blob类型[<a href="http://www.w3.org/TR/FileAPI/#url">FILE API</a>]的URI，用MediaSource的createObjectURL()方法创建，它用来将MediaSource对象绑定到一个HTMLMediaElement.    </p>
+<p>这些URLs和Blob URI一样，所不同的是，它定义的不仅适用于File和Blob对象，还扩展到适用于MediaSource对象。</p>
+<p>MediaSource对象的URL的来源是<a href="http://www.w3.org/TR/html5/browsers.html#effective-script-origin">effective script origin</a>调用的<a href="http://www.w3.org/TR/media-source/#widl-URL-createObjectURL-DOMString-MediaSource-mediaSource">createObjectURL()</a>.  </p>
+<blockquote>
+<p>比如，MediaSource对象的URL的来源影响HTML5媒体标签<a href="http://www.w3.org/TR/html5/scripting-1.html#security-with-canvas-elements">consumed by canvas</a>的方式。  </p>
+</blockquote>
+<h4 id="parent-media-sourcemediasource"><a name="user-content-parent-media-sourcemediasource" href="#parent-media-sourcemediasource" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Parent Media Source（父MediaSource对象）</h4>
+<p>创建SourceBuffer对象的那个MediaSource对象是该SourceBuffer对象的父MediaSource对象。</p>
+<h4 id="presentation-start-time"><a name="user-content-presentation-start-time" href="#presentation-start-time" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Presentation Start Time（播放开始时间）</h4>
+<p>开始时间是播放开始的最早时间点，并指定<a href="http://www.w3.org/TR/html5/embedded-content-0.html#initial-playback-position">initial playback position</a>和<a href="http://www.w3.org/TR/html5/embedded-content-0.html#earliest-possible-position">earliest possible position</a>.而且用此规范的创建的媒体的开始时间为0。  </p>
+<h4 id="presentation-interval"><a name="user-content-presentation-interval" href="#presentation-interval" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Presentation Interval（显示间隔）</h4>
+<p>一个编码帧的显示间隔是从它的显示时间戳开始，到其加上编码帧长。比如，如果一个编码帧的显示时间戳是10s，编码帧长是100ms，那么显示间隔是[10s-10.1s]。注意这段区间的开始是包含在内的，而结尾是排除在外的。  </p>
+<h4 id="presentation-order"><a name="user-content-presentation-order" href="#presentation-order" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Presentation Order（显示顺序）</h4>
+<p>编码帧在展示时的顺序。先后顺序的实现是由编码帧的显示时间戳的大小来实现的。  </p>
+<h4 id="presentation-timestamp"><a name="user-content-presentation-timestamp" href="#presentation-timestamp" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Presentation Timestamp（显示时间戳）</h4>
+<p>代表一个媒体展示时的一个具体时刻。一个编码帧显示时间戳表示何时帧应该呈现。  </p>
+<h4 id="random-access-point"><a name="user-content-random-access-point" href="#random-access-point" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Random Access Point（随机访问点）</h4>
+<p>指任意媒体分片的任意一个位置，当指定该位置后，媒体可以从该位置继续解码和播放，不需要依赖之前分段的任何数据。对于视频，指第i帧的位置。对于音频，大多音频帧可以被当做随机访问点。因为视频轨道倾向于具有稀疏分布的随机接入点。这些点的位置通常被认为多轨道媒体流的随机访问点。  </p>
+<h4 id="sourcebuffer-byte-stream-format-specificationsourcebuffer"><a name="user-content-sourcebuffer-byte-stream-format-specificationsourcebuffer" href="#sourcebuffer-byte-stream-format-specificationsourcebuffer" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>SourceBuffer byte stream format specification（SourceBuffer字节流格式规范）</h4>
+<p><a href="http://www.w3.org/TR/media-source/#byte-stream-format-specs">byte stream format specifacations</a>描述了SourceBuffer实例可以接受的流格式。通过addSourceBuffer()方法，选定满足<a href="http://www.w3.org/TR/media-source/#byte-stream-format-specs">byte stream format specifacations</a>的格式，创建SourceBuffer对象。  </p>
+<h4 id="sourcebuffer-configurationsourcebuffer"><a name="user-content-sourcebuffer-configurationsourcebuffer" href="#sourcebuffer-configurationsourcebuffer" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>SourceBuffer configuration（SourceBuffer配置）</h4>
+<p>创建MediaSource的实例SourceBuffer对象。而一组特定的轨道分布在一个或者多个SourceBuffer对象中。<br />
+实现必须具有至少一个MediaSource对象，并需要以下配置。  </p>
+<ul>
+<li>一个SourceBuffer对象加载一个音频或视频轨道；</li>
+<li>两个SourceBuffer，一个加载一个音频轨道，另一个SourceBuffer加载一个视频轨道。</li>
+</ul>
+<h4 id="track-description"><a name="user-content-track-description" href="#track-description" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Track Description（轨道描述）</h4>
+<p>一个字节流格式的特定的结构，包含轨道ID，编解码器的配置，和每个轨道的元配置。每个轨道的描述包括一个初始化分片，和唯一的轨道ID。如果在初始化分片时，轨道ID不唯一，用户代理必须运行append error算法并将decode error属性设置为true。  </p>
+<h4 id="track-idid"><a name="user-content-track-idid" href="#track-idid" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Track ID（轨道ID）</h4>
+<p>轨道ID是一个轨道的标示符。轨道ID在轨道描述里识别媒体分片属于哪个轨道。  </p>
+<h2 id="2-mediasource"><a name="user-content-2-mediasource" href="#2-mediasource" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>2. MediaSource对象</h2>
+<p>MediaSource对象表示HTMLMediaElement的媒体数据源。它具有一个SourceBuffer对象列表，可以用来添加媒体数据用来播放。MediaSource对象被web应用所创建，然后连接到一个HTMLMediaElement上。引用通过SourceBuffer列表中的SourceBuffer对象添加媒体数据到源中。当需播放这些媒体数据时，HTMLMediaElement从MediaSource对象中获取这些媒体数据。</p>
+<pre><code>WebIDL
+enum ReadyState {
+    &quot;closed&quot;,
+    &quot;open&quot;,
+    &quot;ended&quot;
+};
+</code></pre>
+
+<table>
+<thead>
+<tr>
+<th align="center">枚举描述</th>
+<th align="center"></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">closed</td>
+<td align="center">表明MediaSource没有与媒体标签相关联。</td>
+</tr>
+<tr>
+<td align="center">open</td>
+<td align="center">MediaSource被媒体标签打开，可以创建SourceBuffer并向其中添加数据</td>
+</tr>
+<tr>
+<td align="center">ended</td>
+<td align="center">MediaSource依旧跟数据标签相关联，但是endOfStream()方法触发了</td>
+</tr>
+</tbody>
+</table>
+<pre><code>WebIDL
+enum EndOfStreamError {
+    &quot;network&quot;,
+    &quot;decode&quot;
+};
+</code></pre>
+
+<table>
+<thead>
+<tr>
+<th align="center">枚举描述</th>
+<th align="center"></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">network</td>
+<td align="center">播放终止，是网络出现错误的标志。</td>
+</tr>
+<tr>
+<td align="center">decode</td>
+<td align="center">播放终止，是解码出现错误的标志。</td>
+</tr>
+</tbody>
+</table>
+<pre><code>[Constructor]
+interface MediaSource : EventTarget {
+    readonly attribute SourceBufferList    sourceBuffers;
+    readonly attribute SourceBufferList    activeSourceBuffers;
+    readonly attribute ReadyState          readyState;
+             attribute unrestricted double duration;
+    SourceBuffer   addSourceBuffer (DOMString type);
+    void     removeSourceBuffer (SourceBuffer sourceBuffer);
+    void     endOfStream (optional EndOfStreamError error);
+    static boolean isTypeSupported (DOMString type);
+};
+</code></pre>
+
+<h3 id="21"><a name="user-content-21" href="#21" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>2.1 属性</h3>
+<h4 id="activesourcebuffers"><a name="user-content-activesourcebuffers" href="#activesourcebuffers" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>activeSourceBuffers</h4>
+<blockquote>
+<p>类型：SourceBufferList<br />
+只读  </p>
+</blockquote>
+<p>是sourceBuffers的子集，包含<a href="http://www.w3.org/TR/html5/embedded-content-0.html#dom-audiotrack-enabled">enabled</a> <a href="http://www.w3.org/TR/html5/embedded-content-0.html#dom-media-audiotracks">audioTracks</a>,  <a href="http://www.w3.org/TR/html5/embedded-content-0.html#dom-videotrack-selected">selected</a> <a href="http://www.w3.org/TR/html5/embedded-content-0.html#dom-media-videotracks">videoTracks</a>和 &ldquo;<a href="http://www.w3.org/TR/html5/embedded-content-0.html#dom-texttrack-showing">showing</a>&rdquo; 或者 &ldquo;<a href="http://www.w3.org/TR/html5/embedded-content-0.html#dom-texttrack-hidden">hidden</a>&rdquo; <a href="http://www.w3.org/TR/html5/embedded-content-0.html#dom-media-texttracks">textTracks</a>.</p>
+<p>在这个列表里的SourceBuffer对象必须跟sourceBuffers属性里的对象顺序相一致。（比如，假如只有sourceBuffers[0]和sourceBuffers[3]在activeSourceBuffers里，那么activeSourceBuffers[0]对应sourceBuffers[0],activeSourceBuffers[1]对应sourceBuffers[3]）。</p>
+<blockquote>
+<p>在这Changes to selected/enable track state章节描述了该属性是如何更新的。</p>
+</blockquote>
+<h4 id="duration"><a name="user-content-duration" href="#duration" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>duration</h4>
+<blockquote>
+<p>类型：<a href="http://dev.w3.org/2006/webapi/WebIDL/#idl-unrestricted-double">unrestricted double</a></p>
+</blockquote>
+<p>允许web应用设置播放的持续时间，在MediaSource对象创建的时候，duration的初始值设置为NaN.<br />
+获取时，执行以下步骤：</p>
+<ul>
+<li>如果readystate属性为”closed”,那么返回NaN。</li>
+<li>否则返回duration的当前值。<br />
+设置时，执行以下步骤</li>
+<li>如果设置的值无效或NaN，则会抛出异常<a href="http://www.w3.org/TR/html5/infrastructure.html#invalidaccesserror">InvalidAccessError</a>，并终止以下步骤。</li>
+<li>如果readystate属性不是”open”，则会抛出异常<a href="http://www.w3.org/TR/html5/infrastructure.html#invalidstateerror">InvalidStateError</a>，并终止以下步骤。</li>
+<li>如果sourceBuffers属性中每个SourceBuffer对象的updating属性均为true，则会抛出异常<a href="http://www.w3.org/TR/html5/infrastructure.html#invalidstateerror">InvalidStateError</a>，并终止以下步骤。</li>
+<li>执行<a href="http://www.w3.org/TR/media-source/#duration-change-algorithm">duration change算法</a>，为duration设定新分配的值。</li>
+</ul>
+<blockquote>
+<p>在某些情况下，appendBuffer(),appendStream(),endOfStream()可能会更新duration的值。</p>
+</blockquote>
+<h4 id="readystate"><a name="user-content-readystate" href="#readystate" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>readyState</h4>
+<blockquote>
+<p>类型：ReadyState<br />
+只读</p>
+</blockquote>
+<p>指示MediaSource当前的状态，当MediaSource对象刚创建时，readyState的值为false.</p>
+<h4 id="sourcebuffers"><a name="user-content-sourcebuffers" href="#sourcebuffers" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>SourceBuffers</h4>
+<blockquote>
+<p>类型：SourceBufferList<br />
+只读</p>
+</blockquote>
+<p>包括跟该MediaSource相关联的所有的SourceBuffer对象。当readyState的值为&rdquo;false&rdquo;时，这个列表为空。一旦readyState的为&rdquo;open&rdquo;状态，SourceBuffer对象可以添加到该列表通过addSourceBuffer().</p>
+<h3 id="22"><a name="user-content-22" href="#22" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>2.2 方法</h3>
+<h4 id="addsourcebuffer"><a name="user-content-addsourcebuffer" href="#addsourcebuffer" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>addSourceBuffer</h4>
+<p>添加一个SourceBuffer到sourceBuffers里</p>
+<p>返回类型：SourceBuffer</p>
+<table>
+<thead>
+<tr>
+<th align="center">参数</th>
+<th align="center">类型</th>
+<th align="center">可否为空</th>
+<th align="center">其他选项</th>
+<th align="center">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">type</td>
+<td align="center">DOMString</td>
+<td align="center">✘</td>
+<td align="center">✘</td>
+<td align="center"></td>
+</tr>
+</tbody>
+</table>
+<p>当调用该方法时，用户代理必须执行以下步骤：</p>
+<ul>
+<li>如果参数type是空字符串，则会抛出异常<a href="http://www.w3.org/TR/html5/infrastructure.html#invalidaccesserror">InvalidAccessError</a>，并终止以下步骤。</li>
+<li>如果type包括一个MIME类型但是不被创建的SourceBuffer支持，则会抛出异常<a href="http://www.w3.org/TR/html5/infrastructure.html#notsupportederror">NotSupportedError</a>，并终止以下步骤。</li>
+<li>如果用户代理不能处理更多的SourceBuffer对象或者当创建type类型的SourceBuffer会导致一个不支持的SourceBuffer结构，会抛出异常<a href="http://www.w3.org/TR/html5/infrastructure.html#quotaexceedederror">QuotaExceededError</a>，并终止以下步骤。<blockquote>
+<p>比如，当readyState为<a href="http://www.w3.org/TR/html5/embedded-content-0.html#dom-media-have_metadata">HAVE_MEDIADATA</a>时，此时媒体数据到达，但可能用户代理不支持在播放时添加更多的轨道，则会抛出异常<a href="http://www.w3.org/TR/html5/infrastructure.html#quotaexceedederror">QuotaExceededError</a>.</p>
+</blockquote>
+</li>
+<li>如果属性readyState不是&rdquo;open&rdquo;状态,则抛出异常<a href="http://www.w3.org/TR/html5/infrastructure.html#invalidstateerror">InvalidStateError</a>，并终止以下步骤。</li>
+<li>新建一个新的SourceBuffer对象和相关联的资源</li>
+<li>将新建对象的generate timestamps flag的值设置成与参数type对应的<a href="http://www.w3.org/TR/media-source/#bib-MSE-REGISTRY">MSE-REGISTRY</a>中的&rdquo;Generate Timestamps Flag&rdquo;值。</li>
+<li>如果generate timestamps flag等于true,将属性mode设置为&rdquo;sequence&rdquo;,否则，设置为&rdquo;segments&rdquo;.</li>
+<li>将新建的对象添加到属性sourceBuffers，并<a href="http://www.w3.org/TR/html5/webappapis.html#queue-a-task">触发</a>sourceBuffers中的addSourceBuffer<a href="http://www.w3.org/TR/html5/webappapis.html#fire-a-simple-event">事件</a>。</li>
+<li>返回新建的对象</li>
+</ul>
+<h4 id="endofstream"><a name="user-content-endofstream" href="#endofstream" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>endOfStream</h4>
+<p>发出终止流的信号</p>
+<table>
+<thead>
+<tr>
+<th align="center">参数</th>
+<th align="center">类型</th>
+<th align="center">可否为空</th>
+<th align="center">其他选项</th>
+<th align="center">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">error</td>
+<td align="center">EndOfStreamError</td>
+<td align="center">✘</td>
+<td align="center">✘</td>
+<td align="center"></td>
+</tr>
+</tbody>
+</table>
+<p>返回类型：void</p>
+<p>当调用该方法时，用户代理必须执行以下步骤：<br />
+<em>   如果readyState不是&rdquo;open&rdquo;状态，则抛出异常<a href="http://www.w3.org/TR/html5/infrastructure.html#invalidstateerror">InvalidStateError</a>，并终止以下步骤。<br />
+</em>   如果sourceBuffers中所有的SourceBuffer对象的updating属性等于&rdquo;true&rdquo;,则抛出异常<a href="http://www.w3.org/TR/html5/infrastructure.html#invalidstateerror">InvalidStateError</a>，并终止以下步骤。<br />
+*   执行end of stream算法并将error参数设置成error</p>
+<h4 id="istypesupportedstatic"><a name="user-content-istypesupportedstatic" href="#istypesupportedstatic" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>isTypeSupported,static</h4>
+<p>判断MediaSource是否可以为指定的MIME type创建SourceBuffer对象。</p>
+<blockquote>
+<p>如果这个方法返回true，它仅仅表明MediaSource可以为指定的MIME type创建SourceBuffer对象，但是若大量的媒体不支持创建额外的SourceBuffer对象，执行addSourceBuffer()时仍然可能出错。<br />
+如果这个方法返回true，意味着HTMLMediaElement.canPlayType()可能返回 &ldquo;maybe&rdquo; or &ldquo;probably&rdquo;，因为MediaSource支持一个类型，但HTMLMediaElement却不能播放是没有意义的。</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th align="center">参数</th>
+<th align="center">类型</th>
+<th align="center">可否为空</th>
+<th align="center">其他选项</th>
+<th align="center">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">type</td>
+<td align="center">DOMString</td>
+<td align="center">✘</td>
+<td align="center">✘</td>
+<td align="center"></td>
+</tr>
+</tbody>
+</table>
+<p>返回类型：boolean</p>
+<p>当调用该方法时，用户代理必须执行以下步骤：</p>
+<ul>
+<li>如果参数type是空字符串，则返回false.</li>
+<li>如果type不包含一个合理的MIME type字符串，则返回false.</li>
+<li>如果type包含MediaSource不支持的媒体类型或者子类型，则返回false.</li>
+<li>如果type包含MediaSource不支持的编码格式，则返回false.</li>
+<li>如果MediaSource不支持特定的媒体类型、子类型、编码组合，则返回false.</li>
+<li>返回true.</li>
+</ul>
+<h4 id="removesourcebuffer"><a name="user-content-removesourcebuffer" href="#removesourcebuffer" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>removeSourceBuffer</h4>
+<p>从MediaSource中移除一个SourceBuffer</p>
+<table>
+<thead>
+<tr>
+<th align="center">参数</th>
+<th align="center">类型</th>
+<th align="center">可否为空</th>
+<th align="center">其他选项</th>
+<th align="center">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">sourceBuffer</td>
+<td align="center">SourceBuffer</td>
+<td align="center">✘</td>
+<td align="center">✘</td>
+<td align="center"></td>
+</tr>
+</tbody>
+</table>
+<p>返回类型：void</p>
+<p>当调用该方法时，用户代理必须执行以下步骤：</p>
+<ul>
+<li>如果指定的sourceBuffer不在sourceBuffers中，则抛出异常[NotFoundError]，并终止以下步骤。</li>
+<li>如果sourceBuffer的updating属性为true,执行以下步骤<ul>
+<li>如果buffer append和stream append loop算法还在执行，将其终止。</li>
+<li>将sourceBuffer的updating属性置成false.</li>
+<li>在<a href="http://www.w3.org/TR/html5/webappapis.html#queue-a-task">触发</a>sourceBuffer中的abort<a href="http://www.w3.org/TR/html5/webappapis.html#fire-a-simple-event">事件</a>。</li>
+<li>在<a href="http://www.w3.org/TR/html5/webappapis.html#queue-a-task">触发</a>sourceBuffer中的updateend<a href="http://www.w3.org/TR/html5/webappapis.html#fire-a-simple-event">事件</a>。</li>
+</ul>
+</li>
+<li>让SourceBuffer audioTracks list等于sourceBuffer.audioTracks返回的AudioTrackList对象。</li>
+<li>如果SourceBuffer audioTracks list不空，执行以下步骤<ul>
+<li>让HTMLMediaElement audioTracks list等于HTMLMediaElement中属性audioTracks返回的<a href="http://www.w3.org/TR/html5/embedded-content-0.html#audiotracklist">AudioTrackList</a>对象。</li>
+<li>将removed enabled audio track flag设置为false.</li>
+<li>对于SourceBuffer audioTracks list中的每个AudioTrack对象，执行以下步骤<ul>
+<li>将<a href="http://www.w3.org/TR/html5/embedded-content-0.html#audiotrack">AudioTrack</a>对象的sourceBuffer属性置空。</li>
+<li>如果AudioTrack对象中的enabled属性为true,那么将removed enabled audio track flag设置为true.</li>
+<li>移除HTMLMediaElement audioTracks list中的AudioTrack对象。</li>
+<li><a href="http://www.w3.org/TR/html5/webappapis.html#queue-a-task">触发</a>HTMLMediaElement audioTracks list中的<a href="http://www.w3.org/TR/html5/embedded-content-0.html#handler-tracklist-onremovetrack">removetrack</a>事件(<a href="http://www.w3.org/TR/html5/infrastructure.html#concept-events-trusted">trusted event</a> 不可撤销)。</li>
+<li>移除SourceBuffer audioTracks list中的AudioTrack对象。</li>
+<li><a href="http://www.w3.org/TR/html5/webappapis.html#queue-a-task">触发</a>SourceBuffer audioTracks list中的<a href="http://www.w3.org/TR/html5/embedded-content-0.html#handler-tracklist-onremovetrack">removetrack</a>事件(<a href="http://www.w3.org/TR/html5/infrastructure.html#concept-events-trusted">trusted event</a> 不可撤销)。</li>
+</ul>
+</li>
+<li>如果removed enabled audio track flag等于true,<a href="http://www.w3.org/TR/html5/webappapis.html#queue-a-task">触发</a>HTMLMediaElement audioTracks list中的<a href="http://www.w3.org/TR/html5/embedded-content-0.html#handler-tracklist-onchange">change</a> <a href="http://www.w3.org/TR/html5/webappapis.html#fire-a-simple-event">事件</a>。</li>
+</ul>
+</li>
+<li>让SourceBuffer videoTracks list等于sourceBuffer.videoTracks返回的VideoTrackList对象。</li>
+<li>如果SourceBuffer videoTracks list不空，执行以下步骤<ul>
+<li>让HTMLMediaElement videoTracks list等于HTMLMediaElement中属性videoTracks返回的<a href="http://www.w3.org/TR/html5/embedded-content-0.html#videotracklist">VideoTrackList</a>对象。</li>
+<li>将removed enabled audio track flag设置为false.</li>
+<li>对于SourceBuffer audioTracks list中的每个AudioTrack对象，执行以下步骤<ul>
+<li>将<a href="http://www.w3.org/TR/html5/embedded-content-0.html#videotrack">VideoTrack</a>对象的sourceBuffer属性置空。</li>
+<li>如果VideoTrack对象中的selected属性为true,那么将removed enabled video track flag设置为true.</li>
+<li>移除HTMLMediaElement videoTracks list中的VideoTrack对象。</li>
+<li><a href="http://www.w3.org/TR/html5/webappapis.html#queue-a-task">触发</a>HTMLMediaElement videoTracks list中的<a href="http://www.w3.org/TR/html5/embedded-content-0.html#handler-tracklist-onremovetrack">removetrack</a>事件(<a href="http://www.w3.org/TR/html5/infrastructure.html#concept-events-trusted">trusted event</a> 不可撤销)。</li>
+<li>移除SourceBuffer videoTracks list中的VideoTrack对象。</li>
+<li><a href="http://www.w3.org/TR/html5/webappapis.html#queue-a-task">触发</a>SourceBuffer videoTracks list中的<a href="http://www.w3.org/TR/html5/embedded-content-0.html#handler-tracklist-onremovetrack">removetrack</a>事件(<a href="http://www.w3.org/TR/html5/infrastructure.html#concept-events-trusted">trusted event</a> 不可撤销)。</li>
+</ul>
+</li>
+<li>如果removed enabled video track flag等于true,<a href="http://www.w3.org/TR/html5/webappapis.html#queue-a-task">触发</a>HTMLMediaElement videoTracks list中的<a href="http://www.w3.org/TR/html5/embedded-content-0.html#handler-tracklist-onchange">change</a> <a href="http://www.w3.org/TR/html5/webappapis.html#fire-a-simple-event">事件</a>。</li>
+</ul>
+</li>
+<li>让SourceBuffer textTracks list等于sourceBuffer.textTracks返回的TextTrackList对象。</li>
+<li>如果SourceBuffer textTracks list不空，执行以下步骤<ul>
+<li>让HTMLMediaElement textTracks list等于HTMLMediaElement中属性textTracks返回的<a href="http://www.w3.org/TR/html5/embedded-content-0.html#texttracklist">TextTrackList</a>对象。</li>
+<li>将removed enabled text track flag设置为false.</li>
+<li>对于SourceBuffer textTracks list中的每个TextTrack对象，执行以下步骤<ul>
+<li>将<a href="http://www.w3.org/TR/html5/embedded-content-0.html#texttrack">TextTrack</a>对象的sourceBuffer属性置空。</li>
+<li>如果TextTrack对象中的mode属性为true,那么将removed enabled text track flag设置为true.</li>
+<li>移除HTMLMediaElement textTracks list中的TextTrack对象。</li>
+<li><a href="http://www.w3.org/TR/html5/webappapis.html#queue-a-task">触发</a>HTMLMediaElement textTracks list中的<a href="http://www.w3.org/TR/html5/embedded-content-0.html#handler-tracklist-onremovetrack">removetrack</a>事件(<a href="http://www.w3.org/TR/html5/infrastructure.html#concept-events-trusted">trusted event</a> 不可撤销)。</li>
+<li>移除SourceBuffer textTracks list中的VideoTrack对象。</li>
+<li><a href="http://www.w3.org/TR/html5/webappapis.html#queue-a-task">触发</a>SourceBuffer textTracks list中的<a href="http://www.w3.org/TR/html5/embedded-content-0.html#handler-tracklist-onremovetrack">removetrack</a>事件(<a href="http://www.w3.org/TR/html5/infrastructure.html#concept-events-trusted">trusted event</a> 不可撤销)。</li>
+</ul>
+</li>
+<li>如果removed enabled text track flag等于true,<a href="http://www.w3.org/TR/html5/webappapis.html#queue-a-task">触发</a>HTMLMediaElement textTracks list中的<a href="http://www.w3.org/TR/html5/embedded-content-0.html#handler-tracklist-onchange">change</a> <a href="http://www.w3.org/TR/html5/webappapis.html#fire-a-simple-event">事件</a>。</li>
+</ul>
+</li>
+<li>如果activeSourceBuffers中存在sourceBuffer,那么移除之，并<a href="http://www.w3.org/TR/html5/webappapis.html#queue-a-task">触发</a>sourceBuffers返回的SourceBufferList中的removesourcebuffer<a href="http://www.w3.org/TR/html5/webappapis.html#fire-a-simple-event">事件</a>。</li>
+<li>移除sourceBuffers中的sourceBuffer,并<a href="http://www.w3.org/TR/html5/webappapis.html#queue-a-task">触发</a>sourceBuffers返回的SourceBufferList中的removesourcebuffer<a href="http://www.w3.org/TR/html5/webappapis.html#fire-a-simple-event">事件</a>。</li>
+<li>释放sourceBuffer的所有资源。</li>
+</ul>
+<h3 id="23"><a name="user-content-23" href="#23" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>2.3 事件总结</h3>
+<table>
+<thead>
+<tr>
+<th align="center">事件名称</th>
+<th align="center">接口</th>
+<th align="center">触发时间</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">sourceopen</td>
+<td align="center">Event</td>
+<td align="center">readyState属性从&rdquo;closed&rdquo;变成&rdquo;open&rdquo;或从&rdquo;ended&rdquo;变成&rdquo;open&rdquo;</td>
+</tr>
+<tr>
+<td align="center">sourceended</td>
+<td align="center">Event</td>
+<td align="center">readyState属性从&rdquo;open&rdquo;变成&rdquo;ended&rdquo;</td>
+</tr>
+<tr>
+<td align="center">sourceclose</td>
+<td align="center">Event</td>
+<td align="center">readyState属性从&rdquo;open&rdquo;变成&rdquo;closed&rdquo;或从&rdquo;ended&rdquo;变成&rdquo;closed&rdquo;</td>
+</tr>
+</tbody>
+</table>
+<h3 id="24"><a name="user-content-24" href="#24" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>2.4 算法</h3>
+<h4 id="241-attaching-to-a-media-element"><a name="user-content-241-attaching-to-a-media-element" href="#241-attaching-to-a-media-element" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>2.4.1 连接到媒体标签(Attaching to a media element)</h4>
+<p>一个MediaSource对象可以连接到媒体标签，通过分配一个MediaSource object URL到媒体标签的src属性，一个MediaSource object URL通过MediaSource对象的createObjectURL()创建。</p>
+<p>如果<a href="http://www.w3.org/TR/html5/embedded-content-0.html#concept-media-load-resource">resource fetch算法</a>的绝对路径与MediaSource object URL相匹配，那么在执行resource fetch算法中的&rdquo;Perform a potentially CORS-enabled fetch&rdquo;步骤前，执行以下步骤。</p>
+<ul>
+<li>如果readyState不是&rdquo;closed&rdquo;，执行<a href="http://www.w3.org/TR/html5/embedded-content-0.html#concept-media-load-resource">resource fetch算法</a>中的 &ldquo;If the media data cannot be fetched at all, due to network errors, causing the user agent to give up trying to fetch the resource&rdquo;步骤。</li>
+<li>否则<ul>
+<li>将readyState置为&rdquo;open&rdquo;.</li>
+<li><a href="http://www.w3.org/TR/html5/webappapis.html#queue-a-task">触发</a>MediaSource中的sourceopen<a href="http://www.w3.org/TR/html5/webappapis.html#fire-a-simple-event">事件</a>。</li>
+<li>继续执行<a href="http://www.w3.org/TR/html5/embedded-content-0.html#concept-media-load-resource">resource fetch算法</a>中的&rdquo;Perform a potentially CORS-enabled fetch&rdquo;步骤，将<a href="http://www.w3.org/TR/html5/embedded-content-0.html#concept-media-load-resource">resource fetch算法</a>中指向&rdquo;the download&rdquo;或者&rdquo;bytes received&rdquo;的文字委托到apendBuffer()和appendStream()获得的数据。</li>
+</ul>
+</li>
+</ul>
+<h4 id="242-detaching-from-a-media-element"><a name="user-content-242-detaching-from-a-media-element" href="#242-detaching-from-a-media-element" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>2.4.2 与媒体标签分离(Detaching from a media element)</h4>
+<p>当媒体标签即将过渡为<a href="http://www.w3.org/TR/html5/embedded-content-0.html#dom-media-network_empty">NETWORK_EMPTY</a>,并<a href="http://www.w3.org/TR/html5/webappapis.html#queue-a-task">触发</a>媒体标签中的<a href="http://www.w3.org/TR/html5/embedded-content-0.html#event-mediacontroller-emptied">emptied</a> <a href="http://www.w3.org/TR/html5/webappapis.html#fire-a-simple-event">事件</a>。时间以下步骤将会在任意情况下执行。</p>
+<ul>
+<li>将属性readyState置为&rdquo;closed&rdquo;.</li>
+<li>将属性duration更新为NaN.</li>
+<li>删除activeSourceBuffers里所有的SourceBuffer对象。</li>
+<li><a href="http://www.w3.org/TR/html5/webappapis.html#queue-a-task">触发</a>activeSourceBuffers中的removesourcebuffer<a href="http://www.w3.org/TR/html5/webappapis.html#fire-a-simple-event">事件</a>。</li>
+<li>删除sourceBuffers里所有的SourceBuffer对象。</li>
+<li><a href="http://www.w3.org/TR/html5/webappapis.html#queue-a-task">触发</a>sourceBuffers中的removesourcebuffer<a href="http://www.w3.org/TR/html5/webappapis.html#fire-a-simple-event">事件</a>。</li>
+<li><a href="http://www.w3.org/TR/html5/webappapis.html#queue-a-task">触发</a>MediaSource中的sourceclose<a href="http://www.w3.org/TR/html5/webappapis.html#fire-a-simple-event">事件</a>。</li>
+</ul>
+<h4 id="243-seeking"><a name="user-content-243-seeking" href="#243-seeking" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>2.4.3 随机定位(Seeking)</h4>
+<p>执行以下几个步骤，并作为<a href="http://www.w3.org/TR/html5/embedded-content-0.html#dom-media-seek">seek算法</a>中&rdquo;Wait until the user agent has established whether or not the media data for the new playback position is available, and, if it is, until it has decoded enough data to play back that position&rdquo;步骤的一部分。</p>
+<ul>
+<li>随机定位进度条时，需要的媒体分段包含新的播放位置。<ul>
+<li>如果一个或者activeSourceBuffers中的对象缺少指定位置的媒体分段：<ul>
+<li>如果HTMLMediaElement.readyState属性比HAVE_METADATA大，那么设置HTMLMediaElement.readyState为HAVE_METADATA。</li>
+<li>媒体标签等待appendBuffer()或者appendStream()执行，然后使用coded frame processing算法使得HTMLMediaElement.readyState比HAVE_METADATA大。</li>
+</ul>
+</li>
+<li>否则继续。</li>
+</ul>
+</li>
+<li>媒体标签重设所有解码器和从initialization segment的合适位置初始化所有数据。</li>
+<li>媒体标签从active track buffers中找到新的播放位置最近的随机访问点进行编码。</li>
+<li>继续执行seek算法中的&rdquo;Await a stable state&rdquo;步骤。</li>
+</ul>
+<h4 id="244-sourcebuffer-monitoring"><a name="user-content-244-sourcebuffer-monitoring" href="#244-sourcebuffer-monitoring" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>2.4.4 SourceBuffer Monitoring</h4>
+<h4 id="245-changes-to-selectedenabled-track-state"><a name="user-content-245-changes-to-selectedenabled-track-state" href="#245-changes-to-selectedenabled-track-state" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>2.4.5 Changes to selected/enabled track state</h4>
+<h4 id="246-duration-change"><a name="user-content-246-duration-change" href="#246-duration-change" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>2.4.6  Duration change</h4>
+<h4 id="247-end-of-stream-algorithm"><a name="user-content-247-end-of-stream-algorithm" href="#247-end-of-stream-algorithm" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>2.4.7 End of stream algorithm</h4>
+<h2 id="3-sourcebuffer"><a name="user-content-3-sourcebuffer" href="#3-sourcebuffer" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>3. SourceBuffer对象</h2>
+<pre><code>WebIDL
+enum AppendMode {
+    &quot;segments&quot;,
+    &quot;sequence&quot;
+};
+</code></pre>
+
+<table>
+<thead>
+<tr>
+<th align="center">枚举描述</th>
+<th align="center"></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">segments</td>
+<td align="center">媒体分片中的时间戳决定编码帧播放的位置，媒体分片可以无序添加</td>
+</tr>
+<tr>
+<td align="center">sequence</td>
+<td align="center">媒体分片被当做是邻接的时间独立的片段，新媒体分片需要紧随先前媒体分配的编码帧。如果需要添加新的媒体分片，设定timestampOffset属性为&rdquo;sequence&rdquo;模式，允许媒体分片按照时间线的特定顺序添加，不需要知道每个媒体分片的时间戳信息</td>
+</tr>
+</tbody>
+</table>
+<pre><code>WebIDL
+interface SourceBuffer : EventTarget {
+                attribute AppendMode          mode;
+    readonly    attribute boolean             updating;
+    readonly    attribute TimeRanges          buffered;
+                attribute double              timestampOffset;
+    readonly    attribute AudioTrackList      audioTracks;
+    readonly    attribute VideoTrackList      videoTracks;
+    readonly    attribute TextTrackList       textTracks;
+                attribute double              appendWindowStart;
+                attribute unrestricted double appendWindowEnd;
+    void appendBuffer (ArrayBuffer data);
+    void appendBuffer (ArrayBufferView data);
+    void appendStream (ReadableStream stream, [EnforceRange] optional unsigned long long maxSize);
+    void abort ();
+    void remove (double start, unrestricted double end);
+                attribute TrackDefaultList    trackDefaults;
+};
+</code></pre>
+
+<h3 id="31"><a name="user-content-31" href="#31" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>3.1 属性</h3>
+<h4 id="appendwindowend"><a name="user-content-appendwindowend" href="#appendwindowend" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>appendWindowEnd</h4>
+<blockquote>
+<p>类型：unrestricted double</p>
+</blockquote>
+<p>添加窗口的终止时间戳，初始化为正无穷。</p>
+<p>获取该属性时，返回正无穷或者最后设置的值。</p>
+<p>设置时，执行以下几个步骤：</p>
+<ul>
+<li>如果该属性已经从父MediaSource对象的sourceBuffers属性中移除，则抛出异常<a href="http://www.w3.org/TR/html5/infrastructure.html#invalidstateerror">InvalidStateError</a>,并终止以下步骤。</li>
+<li>如果updating属性为true,则抛出异常<a href="http://www.w3.org/TR/html5/infrastructure.html#invalidstateerror">InvalidStateError</a>,并终止以下步骤。</li>
+<li>如果新的值为NaN，则抛出异常<a href="http://www.w3.org/TR/html5/infrastructure.html#invalidaccesserror">InvalidAccessError</a>,并终止以下步骤。</li>
+<li>如果新的值小于等于appendWindowStart,则抛出异常<a href="http://www.w3.org/TR/html5/infrastructure.html#invalidaccesserror">InvalidAccessError</a>,并终止以下步骤。</li>
+<li>更新属性值为新值。</li>
+</ul>
+<h4 id="appendwindowstart"><a name="user-content-appendwindowstart" href="#appendwindowstart" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>appendWindowStart</h4>
+<blockquote>
+<p>类型：double</p>
+</blockquote>
+<p>添加窗口的开始时间戳，初始化为播放开始时间。</p>
+<p>获取该属性时，返回初始值或者最后设置的值。</p>
+<p>设置时，执行以下几个步骤：</p>
+<ul>
+<li>如果该属性已经从父MediaSource对象的sourceBuffers属性中移除，则抛出异常<a href="http://www.w3.org/TR/html5/infrastructure.html#invalidstateerror">InvalidStateError</a>,并终止以下步骤。</li>
+<li>如果updating属性为true,则抛出异常<a href="http://www.w3.org/TR/html5/infrastructure.html#invalidstateerror">InvalidStateError</a>,并终止以下步骤。</li>
+<li>如果新的值小于0或者大于appendWindowEnd,则抛出异常<a href="http://www.w3.org/TR/html5/infrastructure.html#invalidaccesserror">InvalidAccessError</a>,并终止以下步骤。</li>
+<li>更新属性值为新值。</li>
+</ul>
+<h4 id="audiotracks"><a name="user-content-audiotracks" href="#audiotracks" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>audioTracks</h4>
+<blockquote>
+<p>类型：AudioTrackList<br />
+只读</p>
+</blockquote>
+<p>AudioTrack对象的列表通过此对象创建。</p>
+<h4 id="buffered"><a name="user-content-buffered" href="#buffered" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>buffered</h4>
+<blockquote>
+<p>类型：TimeRanges<br />
+只读</p>
+</blockquote>
+<p>指示SourceBuffer已经缓冲的<a href="http://www.w3.org/TR/html5/embedded-content-0.html#timeranges">时间范围</a>。对象刚建立时，该属性为一个空的TimeRanges对象。</p>
+<p>当该对象被读的时候，需要执行以下步骤：</p>
+<ul>
+<li>如果该属性已经从父MediaSource对象的sourceBuffers属性中移除，则抛出异常<a href="http://www.w3.org/TR/html5/infrastructure.html#invalidstateerror">InvalidStateError</a>,并终止以下步骤。</li>
+<li>让highest end time为所有SourceBuffer的track buffers范围中最大的终止时间。</li>
+<li>让intersection ranges等于一个<a href="http://www.w3.org/TR/html5/embedded-content-0.html#timeranges">TimeRange</a>对象，包含一个单一的从0到highest end time的范围。</li>
+<li>对于SourceBuffer管理的每一个track buffer，执行以下步骤：<ul>
+<li>让track ranges等于当前track buffer的track buffer ranges.</li>
+<li>如果readyState等于&rdquo;ended&rdquo;,那么设置最后一个track ranges的终止时间为highest end time.</li>
+<li>让new intersection ranges等于intersection ranges和track ranges的交接范围。</li>
+<li>让new intersection ranges代替intersection ranges中的范围。</li>
+</ul>
+</li>
+<li>如果intersection ranges的值和当前属性表示的范围不一致，那么将该属性的值赋给intersection ranges.</li>
+<li>返回当前属性的值。</li>
+</ul>
+<h4 id="mode"><a name="user-content-mode" href="#mode" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>mode</h4>
+<blockquote>
+<p>类型：AppendMode</p>
+</blockquote>
+<p>控制meidaSegments被处理的方式，当对象初始化之后，通过addSourceBuffer()方法初始化该属性。</p>
+<p>获取该属性时，返回初始值或者最后设置的值。</p>
+<p>设置时，执行以下几个步骤：</p>
+<ul>
+<li>如果该对象已经在父MediaSource对象的sourceBuffers中移除，则会抛出异常<a href="http://www.w3.org/TR/html5/infrastructure.html#invalidstateerror">InvalidStateError</a>，并终止以下步骤。</li>
+<li>如果updating属性等于true,则会抛出异常<a href="http://www.w3.org/TR/html5/infrastructure.html#invalidstateerror">InvalidStateError</a>，并终止以下步骤。</li>
+<li>让新的mode等于分配给其的新值。</li>
+<li>如果generate timestamps flag等于true,而且新的mode等于&rdquo;segments&rdquo;,则会抛出异常<a href="http://www.w3.org/TR/html5/infrastructure.html#invalidaccesserror">InvalidAccessError</a>，并终止以下步骤。</li>
+<li>如果父MediaSource对象的readyState属性为&rdquo;ended&rdquo;,执行以下步骤：<ul>
+<li>将该readyState设置为&rdquo;open&rdquo;.</li>
+<li><a href="http://www.w3.org/TR/html5/webappapis.html#queue-a-task">触发</a>父MediaSource对象中的sourceopen<a href="http://www.w3.org/TR/html5/webappapis.html#fire-a-simple-event">事件</a>。</li>
+</ul>
+</li>
+<li>如果append state等于PARSING_MEDIA_SEGMENT,则会抛出异常<a href="http://www.w3.org/TR/html5/infrastructure.html#invalidstateerror">InvalidStateError</a>，并终止以下步骤。</li>
+<li>如果新的mode等于&rdquo;sequence&rdquo;,那么设置group start timestamp为group end timestamp.</li>
+<li>更新属性为新的mode值。</li>
+</ul>
+<h4 id="texttracks"><a name="user-content-texttracks" href="#texttracks" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>textTracks</h4>
+<blockquote>
+<p>类型：TextTrackList<br />
+只读</p>
+</blockquote>
+<p>TextTrack对象的列表被该对象创建。</p>
+<h4 id="timestampoffset"><a name="user-content-timestampoffset" href="#timestampoffset" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>timestampOffset</h4>
+<blockquote>
+<p>类型：double</p>
+</blockquote>
+<p>控制接下来需要添加到SourceBuffer中的媒体分段的时间偏移量，初始化为0。</p>
+<p>获取该属性时，返回初始值或者最后设置的值。</p>
+<p>设置时，执行以下几个步骤：</p>
+<ul>
+<li>让新的timestamp值等于设置的新值。</li>
+<li>如果该对象已经在父MediaSource对象的sourceBuffers中移除，则会抛出异常<a href="http://www.w3.org/TR/html5/infrastructure.html#invalidstateerror">InvalidStateError</a>，并终止以下步骤。</li>
+<li>如果updating属性等于true,则会抛出异常<a href="http://www.w3.org/TR/html5/infrastructure.html#invalidstateerror">InvalidStateError</a>，并终止以下步骤。</li>
+<li>如果父MediaSource对象的readyState属性为&rdquo;ended&rdquo;,执行以下步骤：<ul>
+<li>将该readyState设置为&rdquo;open&rdquo;.</li>
+<li><a href="http://www.w3.org/TR/html5/webappapis.html#queue-a-task">触发</a>父MediaSource对象中的sourceopen<a href="http://www.w3.org/TR/html5/webappapis.html#fire-a-simple-event">事件</a>。</li>
+</ul>
+</li>
+<li>如果append state等于PARSING_MEDIA_SEGMENT,则会抛出异常<a href="http://www.w3.org/TR/html5/infrastructure.html#invalidstateerror">InvalidStateError</a>，并终止以下步骤。</li>
+<li>如果新的mode等于&rdquo;sequence&rdquo;,那么设置group start timestamp为group end timestamp.</li>
+<li>更新属性为新的timestamp值。</li>
+</ul>
+<h4 id="trackdefaults"><a name="user-content-trackdefaults" href="#trackdefaults" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>trackDefaults</h4>
+<blockquote>
+<p>类型：TrackDefaultList</p>
+</blockquote>
+<p>当initialization segment received算法需要创建track对象时，如果initialization segment的种类、标签或者语言等信息不可用，然后可以用该属性的默认轨道。初始化为空的TrackDefaultList对象。</p>
+<p>获取该属性时，返回初始值或者最后设置的值。</p>
+<p>设置时，执行以下几个步骤：</p>
+<ul>
+<li>如果该对象已经在父MediaSource对象的sourceBuffers中移除，则会抛出异常<a href="http://www.w3.org/TR/html5/infrastructure.html#invalidstateerror">InvalidStateError</a>，并终止以下步骤。</li>
+<li>如果updating属性等于true,则会抛出异常<a href="http://www.w3.org/TR/html5/infrastructure.html#invalidstateerror">InvalidStateError</a>，并终止以下步骤。</li>
+<li>更新属性为新的值。</li>
+</ul>
+<h4 id="updating"><a name="user-content-updating" href="#updating" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>updating</h4>
+<blockquote>
+<p>boolean<br />
+只读</p>
+</blockquote>
+<p>表明apendBuffer(),apendStream(),或者remove()操作是否仍在异步执行，SourceBuffer对象创建时，初始化false.</p>
+<p>videoTracks</p>
+<blockquote>
+<p>VideoTrackList<br />
+只读</p>
+</blockquote>
+<p>videoTrack对象的列表被该对象创建。</p>
+<h3 id="32"><a name="user-content-32" href="#32" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>3.2 方法</h3>
+<h4 id="abort"><a name="user-content-abort" href="#abort" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>abort</h4>
+<p>终止当前分段，并重置分段分析器。</p>
+<p>没有参数。</p>
+<p>返回类型：void</p>
+<p>当调用该方法时，用户代理必须执行以下步骤：</p>
+<ul>
+<li>如果该对象已经在父MediaSource对象的sourceBuffers中移除，则会抛出异常<a href="http://www.w3.org/TR/html5/infrastructure.html#invalidstateerror">InvalidStateError</a>，并终止以下步骤。</li>
+<li>如果readystate属性不是”open”，则会抛出异常<a href="http://www.w3.org/TR/html5/infrastructure.html#invalidstateerror">InvalidStateError</a>，并终止以下步骤。</li>
+<li>如果updating属性等于true,执行以下步骤：<ul>
+<li>如果stream append loop算法和buffer append正在执行，终止之。</li>
+<li>设置updating属性为true.</li>
+<li><a href="http://www.w3.org/TR/html5/webappapis.html#queue-a-task">触发</a>此SourceBuffer对象中的abort<a href="http://www.w3.org/TR/html5/webappapis.html#fire-a-simple-event">事件</a>。</li>
+<li><a href="http://www.w3.org/TR/html5/webappapis.html#queue-a-task">触发</a>此SourceBuffer对象中的updateend<a href="http://www.w3.org/TR/html5/webappapis.html#fire-a-simple-event">事件</a>。</li>
+</ul>
+</li>
+<li>执行reset parser state算法.</li>
+<li>设置appendWindowStart为播放开始时间。</li>
+<li>设置appendWindowEnd为正无穷。</li>
+</ul>
+<h4 id="appendbuffer"><a name="user-content-appendbuffer" href="#appendbuffer" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>appendBuffer</h4>
+<p>添加ArrayBuffer格式的分段到sourceBuffer.</p>
+<p>此方法的这个步骤与ArrayBufferView版本的appendBuffer()相同。</p>
+<table>
+<thead>
+<tr>
+<th align="center">参数</th>
+<th align="center">类型</th>
+<th align="center">可否为空</th>
+<th align="center">其他选项</th>
+<th align="center">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">data</td>
+<td align="center">ArrayBuffer</td>
+<td align="center">✘</td>
+<td align="center">✘</td>
+<td align="center"></td>
+</tr>
+</tbody>
+</table>
+<p>返回类型：void</p>
+<h4 id="appendbuffer_1"><a name="user-content-appendbuffer_1" href="#appendbuffer_1" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>appendBuffer</h4>
+<p>添加ArrayBufferView格式的分段到sourceBuffer.</p>
+<table>
+<thead>
+<tr>
+<th align="center">参数</th>
+<th align="center">类型</th>
+<th align="center">可否为空</th>
+<th align="center">其他选项</th>
+<th align="center">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">data</td>
+<td align="center">ArrayBufferView</td>
+<td align="center">✘</td>
+<td align="center">✘</td>
+<td align="center"></td>
+</tr>
+</tbody>
+</table>
+<p>返回类型：void</p>
+<p>当调用该方法时，用户代理必须执行以下步骤：</p>
+<ul>
+<li>执行prepare append算法.</li>
+<li>添加数据到input buffer的结尾。</li>
+<li>设置updating属性为true.</li>
+<li><a href="http://www.w3.org/TR/html5/webappapis.html#queue-a-task">触发</a>此SourceBuffer对象中的updatestart<a href="http://www.w3.org/TR/html5/webappapis.html#fire-a-simple-event">事件</a>。</li>
+<li>异步执行buffer append算法.</li>
+</ul>
+<h4 id="appendstream"><a name="user-content-appendstream" href="#appendstream" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>appendStream</h4>
+<p>添加ReadableStream格式的分段到sourceBuffer.<br />
+i.w3.org/TR/html5/webappapis.html#queue-a-task)父MediaSource对象中的sourceopen<a href="http://www.w3.org/TR/html5/webappapis.html#fire-a-simple-event">事件</a>。<br />
+*   执行range removal算法,start和end表示移除的范围。</p>
+<h3 id="33"><a name="user-content-33" href="#33" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>3.3 轨道缓冲器</h3>
+<p>一个轨道缓冲器存储单个轨道的轨道描述和编码帧。通过添加initialization segments和media segments到SourceBuffer里更新轨道缓冲器。</p>
+<p>每一个轨道缓冲器具有一个last decode timestamp变量表示加入到当前编码帧组的最后编码帧的解码时间戳，该变量初始化没有设定，表示没有编码帧被加入。</p>
+<p>每一个轨道缓冲器具有一个last frame duration变量表示加入到当前编码帧组的最后编码帧的编码帧长。该变量初始化没有设定，表示没有编码帧被加入。</p>
+<p>每一个轨道缓冲器具有一个highest presentation timestamp变量表示加入到当前编码帧组的编码帧的最大显示时间戳。该变量初始化没有设定，表示没有编码帧被加入。</p>
+<p>每一个轨道缓冲器具有一个need random access point flag变量表示该轨道是否等待一个随机播放点的编码帧，该属性初始化为true,表示在任意可以加到轨道缓冲器的编码帧前，需要随机访问点的编码帧。</p>
+<p>每一个轨道缓冲器具有一个track buffer ranges变量表示加入到轨道缓冲器的展示时间范围。出于规范目的，这些信息都被看作是一个<a href="http://www.w3.org/TR/html5/embedded-content-0.html#normalized-timeranges-object">规范化的TimeRanges对象</a>。</p>
+<h3 id="34"><a name="user-content-34" href="#34" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>3.4 事件总结</h3>
+<table>
+<thead>
+<tr>
+<th align="center">事件名称</th>
+<th align="center">接口</th>
+<th align="center">触发时间</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">updatestart</td>
+<td align="center">Event</td>
+<td align="center">updating从false变成true</td>
+</tr>
+<tr>
+<td align="center">update</td>
+<td align="center">Event</td>
+<td align="center">添加或者移除操作成功完成后，updating从true变成false</td>
+</tr>
+<tr>
+<td align="center">updateend</td>
+<td align="center">Event</td>
+<td align="center">添加或者移除操作终止后</td>
+</tr>
+<tr>
+<td align="center">error</td>
+<td align="center">Event</td>
+<td align="center">在append.updating从false变成true时，出现了错误</td>
+</tr>
+<tr>
+<td align="center">abort</td>
+<td align="center">Event</td>
+<td align="center">添加或者移除操作被abort()终止，updating从true变成了false</td>
+</tr>
+</tbody>
+</table>
+<h3 id="35"><a name="user-content-35" href="#35" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>3.5 算法</h3>
+<h4 id="351-segment-parser-loop"><a name="user-content-351-segment-parser-loop" href="#351-segment-parser-loop" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>3.5.1 分段循环分析(segment parser loop)</h4>
+<p>每一个SourceBuffer对象都有一个internal append state状态变量，表示分段分析的状态。初始化为WAITING_FOR_SEGMENT,而且在添加数据时可以转化为以下几个状态。</p>
+<table>
+<thead>
+<tr>
+<th align="center">Append state值</th>
+<th align="center">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">WAITING_FOR_SEGMENT</td>
+<td align="center">等待添加初始化分段或者媒体分段</td>
+</tr>
+<tr>
+<td align="center">PARSING_INIT_SEGMENT</td>
+<td align="center">正在添加初始化分段</td>
+</tr>
+<tr>
+<td align="center">PARSING_MEDIA_SEGMENT</td>
+<td align="center">正在添加媒体分段</td>
+</tr>
+</tbody>
+</table>
+<p>input buffer是一个字符缓冲区，用来暂存尚未分析的通过appendBuffer()或者appendStream()获取的字节流。当SourceBuffer对象创建的时候，该缓冲区为空。</p>
+<p>buffer full flag标志位表示是否允许appendBuffer()或者appendStream()添加更多字节流。当SourceBuffer对象创建的时候，该标志位为false,当数据添加或者移除时，该标志位会被修改。</p>
+<p>group start timestamp变量表示在&rdquo;sequence&rdquo;模式中，一个新的编码帧组的开始时间戳，当SourceBuffer对象创建时，该变量没有设定，当&rdquo;mode&rdquo;设定为&rdquo;sequence&rdquo;而且&rdquo;timestampOffset&rdquo;属性设定时，或者coded frame processing算法执行时，该属性被更新。</p>
+<p>group end timestamp变量表示在当前编码帧组中所有的编码帧中最大的结束时间戳，当SourceBuffer对象创建时，该变量初始化为0,而且在coded frame processing算法中更新。</p>
+<blockquote>
+<p>group end timestamp表示的是SourceBuffer中所有的轨道中最大的结束时间戳，因此，当加入混合的未设定时间戳的媒体分段时，应当注意&rdquo;mode&rdquo;的设定。</p>
+</blockquote>
+<p>generate timestamps flag是一个boolean类型的变量，通过coded frame processing算法,它表示编码帧的时间戳是否应该更新，该变量由addSourceBuffer()创建SourceBuffer对象完毕后创建。</p>
+<p>当分段循环分析算法触发时，用户代理必须执行以下步骤：</p>
+<ul>
+<li>循环开始：当input buffer为空，转向下面的need more data步骤。</li>
+<li>如果input buffer中的字节流违背了<a href="http://www.w3.org/TR/media-source/#sourcebuffer-byte-stream-format-spec">SourceBuffer byte stream format specification</a>中的规定，那么执行append error算法,并将参数decode error设定为true,并终止此算法。</li>
+<li>移除<a href="">byte stream format specifications</a>规定的必须忽略的input buffer中的头部信息。</li>
+<li>如果append state等于WAITING_FOR_SEGMENT,那么执行以下步骤。<ul>
+<li>如果input buffer中的头部指示的是初始化分段的开始，那么设定append state为PARSING_INIT_SEGMENT.</li>
+<li>果input buffer中的头部指示的是媒体分段的开始，那么设定append state为PARSING_MEDIA_SEGMENT.</li>
+<li>转向上面的循环开始。</li>
+</ul>
+</li>
+<li>如果append state等于PARSING_INIT_SEGMENT,那么执行以下步骤。<ul>
+<li>如果input buffer么有包含所有的初始化分段，那么跳转到下面的need more data步骤。</li>
+<li>执行initialization segment received算法.</li>
+<li>移除input buffer中的初始化分段字节流。</li>
+<li>设定append state为WAITING_FOR_SEGMENT。</li>
+<li>转向上面的循环开始。</li>
+</ul>
+</li>
+<li>如果append state等于PARSING_MEDIA_SEGMENT,那么执行以下步骤。<ul>
+<li>如果first initialization segment received flag等于false,那么执行append error算法,并将参数decode error设定为true,并终止此算法。</li>
+<li>如果input buffer没有包含完整的媒体分段的头部，那么跳转到下面的need more data步骤。</li>
+<li>如果input buffer没有包含一个或者多个完整的编码帧，那么执行coded frame processing算法.</li>
+<li>如果该SourceBuffer已经满了，不能接收更多的媒体数据，那么设定buffer full flag为true.</li>
+<li>如果input buffer没有包含完整的媒体分段，那么跳转到下面的need more data步骤。</li>
+<li>移除input buffer开始的媒体分段。</li>
+<li>设定append state为WAITING_FOR_SEGMENT.</li>
+<li>跳转到上边的WAITING_FOR_SEGMENT.</li>
+</ul>
+</li>
+<li>Need more data:返回控制调用的算法。</li>
+</ul>
+<h4 id="352-reset-parser-state"><a name="user-content-352-reset-parser-state" href="#352-reset-parser-state" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>3.5.2 重置分析状态(Reset Parser State)</h4>
+<p>当分析状态需要重置的时候，执行以下步骤：</p>
+<ul>
+<li>如果append state等于PARSING_MEDIA_SEGMENT，并且input buffer包含完整的编码帧，那么执行coded frame processing算法直到所有的编码帧被处理。</li>
+<li>复原所有轨道缓冲器的last decode timestamp.</li>
+<li>复原所有轨道缓冲器的last frame duration.</li>
+<li>复原所有轨道缓冲器的highest presentation timestamp.</li>
+<li>设定所有轨道缓冲器的need random access point flag为true.</li>
+<li>移除input buffer中所有字节流。</li>
+<li>设定append state为WAITING_FOR_SEGMENT.</li>
+</ul>
+<h4 id="353-append-error-algorithm"><a name="user-content-353-append-error-algorithm" href="#353-append-error-algorithm" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>3.5.3 添加错误算法(Append Error Algorithm)</h4>
+<p>当添加媒体时出现错误时，该算法被调用。该算法具有一个decode error参数，表示endOfStream()是否应该被调用。</p>
+<ul>
+<li>执行reset parser state算法.</li>
+<li>将updating属性设定为false.</li>
+<li><a href="http://www.w3.org/TR/html5/webappapis.html#queue-a-task">触发</a>sourceBuffer中的error<a href="http://www.w3.org/TR/html5/webappapis.html#fire-a-simple-event">事件</a>。</li>
+<li><a href="http://www.w3.org/TR/html5/webappapis.html#queue-a-task">触发</a>sourceBuffer中的error<a href="http://www.w3.org/TR/html5/webappapis.html#fire-a-simple-event">事件</a>。</li>
+<li>如果decode error是true,然后设定error参数为&rdquo;decode&rdquo;并执行end of stream算法.</li>
+</ul>
+<h4 id="354-prepare-append-algorithm"><a name="user-content-354-prepare-append-algorithm" href="#354-prepare-append-algorithm" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>3.5.4 添加准备算法(Prepare Append Algorithm)</h4>
+<p>当一个添加操作开始时，以下步骤将会执行，使SourceBuffer生效。</p>
+<ul>
+<li>如果该对象已经在父MediaSource对象的sourceBuffers中移除，则会抛出异常<a href="http://www.w3.org/TR/html5/infrastructure.html#invalidstateerror">InvalidStateError</a>，并终止以下步骤。</li>
+<li>如果updating属性为true,则会抛出异常<a href="http://www.w3.org/TR/html5/infrastructure.html#invalidstateerror">InvalidStateError</a>，并终止以下步骤。</li>
+<li>如果<a href="http://www.w3.org/TR/html5/embedded-content-0.html#dom-media-error">HTMLMediaElement.error</a>属性不为空，则会抛出异常<a href="http://www.w3.org/TR/html5/infrastructure.html#invalidstateerror">InvalidStateError</a>，并终止以下步骤。</li>
+<li>如果父MediaSource对象的readyState属性为&rdquo;ended&rdquo;,执行以下步骤：<ul>
+<li>将该readyState设置为&rdquo;open&rdquo;.</li>
+<li><a href="http://www.w3.org/TR/html5/webappapis.html#queue-a-task">触发</a>父MediaSource对象中的sourceopen<a href="http://www.w3.org/TR/html5/webappapis.html#fire-a-simple-event">事件</a>。</li>
+</ul>
+</li>
+<li>执行coded frame eviction算法.</li>
+<li>如果buffer full flag等于true,抛出异常<a href="http://www.w3.org/TR/html5/infrastructure.html#quotaexceedederror">QuotaExceededError</a>.</li>
+</ul>
+<blockquote>
+<p>这是一个信号，表示添加数据太多已经不允许添加更多数据，web应用应该使用remove()去释放一些空间，减少添加窗口的大小。</p>
+</blockquote>
+<h4 id="355-buffer-append-algorithm"><a name="user-content-355-buffer-append-algorithm" href="#355-buffer-append-algorithm" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>3.5.5 添加缓冲算法(Buffer Append Algorithm)</h4>
+<p>当appendBuffer()执行时，执行以下步骤处理添加数据：</p>
+<ul>
+<li>执行segment parser loop算法.</li>
+<li>如果前边的segment parser loop算法被终止了，那么终止此算法。</li>
+<li>将updating属性置为false.</li>
+<li><a href="http://www.w3.org/TR/html5/webappapis.html#queue-a-task">触发</a>sourceBuffer中的update<a href="http://www.w3.org/TR/html5/webappapis.html#fire-a-simple-event">事件</a>。</li>
+<li><a href="http://www.w3.org/TR/html5/webappapis.html#queue-a-task">触发</a>sourceBuffer中的updateend<a href="http://www.w3.org/TR/html5/webappapis.html#fire-a-simple-event">事件</a>。</li>
+</ul>
+<h4 id="356-stream-append-loop"><a name="user-content-356-stream-append-loop" href="#356-stream-append-loop" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>3.5.6 循环添加流算法(Stream Append Loop)</h4>
+<p>该算法在调用appendStream()时触发，将ReadableStrem转化为SourceBuffer,该算法随appendStream的两个参数stream和maxSize初始化执行。</p>
+<ul>
+<li>如果设定了maxSize,那么设定bytesLeft为maxSize.</li>
+<li>循环开始：如果设定了maxSize,并且bytesLeft等于0,那么跳转到下边的loop done步骤。</li>
+<li>如果stream.state等于&rdquo;waiting&rdquo;,那么执行以下步骤：<ul>
+<li>等待stream.ready或者stream.closed确定解决或者拒绝。</li>
+<li>继续以下步骤。</li>
+</ul>
+</li>
+<li>如果stream.state等于&rdquo;closed&rdquo;,那么跳转到下边的循环结束步骤。</li>
+<li>如果stream.state等于&rdquo;errored&rdquo;,那么执行append error算法,参数decode error设定为false,并终止此算法。</li>
+<li>如果stream.state不等于&rdquo;readable&rdquo;,那么执行append error算法,参数decode error设定为false,并终止此算法。</li>
+<li>当data等于stream.read()返回的值。</li>
+<li>如果data不是一个ArrayBuffer或者一个ArrayBufferView,那么执行append error算法,参数decode error设定为false,并终止此算法。</li>
+<li>如果设定了maxSize,那么执行以下步骤：<ul>
+<li>如果data.byteLength比bytesLeft大，那么执行以下步骤：<ul>
+<li>让新的data等于data.slice(0, bytesLeft)返回的值。</li>
+<li>让剩下的data等于data.slice(bytesLeft)返回的值。</li>
+<li>将剩下的data推到stream的头部，因此它可以被stream.read()调用。</li>
+<li>将新的data分配给data.</li>
+</ul>
+</li>
+<li>从byteLeft中减去data.byteLength.</li>
+</ul>
+</li>
+<li>执行coded frame eviction算法.</li>
+<li>如果buffer full flag等于true,那么执行append error算法,参数decode error设定为false,并终止此算法。</li>
+<li>添加数据到input buffer的末尾。</li>
+<li>执行segment parser loop算法。</li>
+<li>如果前一步的segment parser loop算法终止，那么终止此算法。</li>
+<li>跳转到上边的循环开始步骤。</li>
+<li><a href="http://www.w3.org/TR/html5/webappapis.html#queue-a-task">触发</a>sourceBuffer中的update<a href="http://www.w3.org/TR/html5/webappapis.html#fire-a-simple-event">事件</a>。</li>
+<li><a href="http://www.w3.org/TR/html5/webappapis.html#queue-a-task">触发</a>sourceBuffer中的updateend<a href="http://www.w3.org/TR/html5/webappapis.html#fire-a-simple-event">事件</a>。</li>
+</ul>
+<h4 id="357-range-removal"><a name="user-content-357-range-removal" href="#357-range-removal" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>3.5.7 移除缓冲范围(Range Removal)</h4>
+<p>当调用一个显式范围移除操作并阻碍其它SourceBuffer更新时，执行以下步骤：</p>
+<ul>
+<li>让start等于待移除范围的开始时间戳。</li>
+<li>让end等于待移除范围的结束时间戳。</li>
+<li>让updating属性等于true.</li>
+<li><a href="http://www.w3.org/TR/html5/webappapis.html#queue-a-task">触发</a>sourceBuffer中的updatestart<a href="http://www.w3.org/TR/html5/webappapis.html#fire-a-simple-event">事件</a>。</li>
+<li>返回给调用者，并异步执行以下步骤。</li>
+<li>执行coded frame removal algorithm</li>
+</ul></article></body></html>

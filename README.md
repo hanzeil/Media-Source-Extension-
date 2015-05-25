@@ -69,10 +69,10 @@ active Track Buffers可以提供[enabled](http://www.w3.org/TR/html5/embedded-co
 编码帧显示时间戳和它的帧长之和。它表示显示时间戳紧随的编码帧。
 
 ####Coded Frame Group（编码帧组）
-编码帧组是一组邻接的、单调递增的解码时间戳且没有任何间隙的编码帧。如果通过coded frame processing algorithm检测到不连续的帧，那么abort()方法将会触发，而且开始新的编码帧组。  
+编码帧组是一组邻接的、单调递增的解码时间戳且没有任何间隙的编码帧。如果通过coded frame processing算法检测到不连续的帧，那么abort()方法将会触发，而且开始新的编码帧组。  
 
 ####Decode Timestamp（解码时间戳）
-假设帧需要立即解码和展现（该帧和任何依赖它的帧），解码时间戳表示最新需要解码的帧的时间（等同于显示时间戳最早的帧，在显示顺序中，它是依赖此帧的）。如果帧可以在显示顺序之外被解码，则解码时间戳必须存在于或衍生于字节流，如果不是，用户代理必须运行append error algorithm并将decode error参数设置为true。如果解码时间戳不能在显示顺序之外解码，而且不存在于字节流，那么解码时间戳等同于显示时间戳。  
+假设帧需要立即解码和展现（该帧和任何依赖它的帧），解码时间戳表示最新需要解码的帧的时间（等同于显示时间戳最早的帧，在显示顺序中，它是依赖此帧的）。如果帧可以在显示顺序之外被解码，则解码时间戳必须存在于或衍生于字节流，如果不是，用户代理必须运行append error算法并将decode error参数设置为true。如果解码时间戳不能在显示顺序之外解码，而且不存在于字节流，那么解码时间戳等同于显示时间戳。  
 
 ####Displayed Frame Delay（展示帧延迟）
 帧的理论显示时间和实际时间（双精度类型，以秒为单位，四舍五入的离显示刷新间隔最接近的时间）之间的延迟，该延迟大于等于0，因为帧不会在它应该显示的时间之前显示。如果延迟大于0，说明可能存在播放抖动和A/V同步丢失。  
@@ -125,7 +125,7 @@ MediaSource对象的URL的来源是[effective script origin](http://www.w3.org/T
 *   两个SourceBuffer，一个加载一个音频轨道，另一个SourceBuffer加载一个视频轨道。
 
 ####Track Description（轨道描述）
-一个字节流格式的特定的结构，包含轨道ID，编解码器的配置，和每个轨道的元配置。每个轨道的描述包括一个初始化分片，和唯一的轨道ID。如果在初始化分片时，轨道ID不唯一，用户代理必须运行append error algorithm并将decode error属性设置为true。  
+一个字节流格式的特定的结构，包含轨道ID，编解码器的配置，和每个轨道的元配置。每个轨道的描述包括一个初始化分片，和唯一的轨道ID。如果在初始化分片时，轨道ID不唯一，用户代理必须运行append error算法并将decode error属性设置为true。  
 
 ####Track ID（轨道ID）
 轨道ID是一个轨道的标示符。轨道ID在轨道描述里识别媒体分片属于哪个轨道。  
@@ -202,7 +202,7 @@ interface MediaSource : EventTarget {
 *   如果设置的值无效或NaN，则会抛出异常[InvalidAccessError](http://www.w3.org/TR/html5/infrastructure.html#invalidaccesserror)，并终止以下步骤。
 *   如果readystate属性不是”open”，则会抛出异常[InvalidStateError](http://www.w3.org/TR/html5/infrastructure.html#invalidstateerror)，并终止以下步骤。
 *   如果sourceBuffers属性中每个SourceBuffer对象的updating属性均为true，则会抛出异常[InvalidStateError](http://www.w3.org/TR/html5/infrastructure.html#invalidstateerror)，并终止以下步骤。
-*   执行[duration change algorithm](http://www.w3.org/TR/media-source/#duration-change-algorithm)，为duration设定新分配的值。
+*   执行[duration change算法](http://www.w3.org/TR/media-source/#duration-change-algorithm)，为duration设定新分配的值。
 
 >在某些情况下，appendBuffer(),appendStream(),endOfStream()可能会更新duration的值。
 
@@ -220,9 +220,10 @@ interface MediaSource : EventTarget {
 
 ###2.2 方法
 
-####addSourceBuffer(type)
+####addSourceBuffer
 
 添加一个SourceBuffer到sourceBuffers里
+
 返回类型：SourceBuffer
 
 |      参数     |     类型     |   可否为空     |  其他选项      |     描述      |
@@ -235,7 +236,6 @@ interface MediaSource : EventTarget {
 *   如果type包括一个MIME类型但是不被创建的SourceBuffer支持，则会抛出异常[NotSupportedError](http://www.w3.org/TR/html5/infrastructure.html#notsupportederror)，并终止以下步骤。
 *   如果用户代理不能处理更多的SourceBuffer对象或者当创建type类型的SourceBuffer会导致一个不支持的SourceBuffer结构，会抛出异常[QuotaExceededError](http://www.w3.org/TR/html5/infrastructure.html#quotaexceedederror)，并终止以下步骤。
 >比如，当readyState为[HAVE_MEDIADATA](http://www.w3.org/TR/html5/embedded-content-0.html#dom-media-have_metadata)时，此时媒体数据到达，但可能用户代理不支持在播放时添加更多的轨道，则会抛出异常[QuotaExceededError](http://www.w3.org/TR/html5/infrastructure.html#quotaexceedederror).
-
 *   如果属性readyState不是"open"状态,则抛出异常[InvalidStateError](http://www.w3.org/TR/html5/infrastructure.html#invalidstateerror)，并终止以下步骤。
 *   新建一个新的SourceBuffer对象和相关联的资源
 *   将新建对象的generate timestamps flag的值设置成与参数type对应的[MSE-REGISTRY](http://www.w3.org/TR/media-source/#bib-MSE-REGISTRY)中的"Generate Timestamps Flag"值。
@@ -256,10 +256,12 @@ interface MediaSource : EventTarget {
 当调用该方法时，用户代理必须执行以下步骤：
 *   如果readyState不是"open"状态，则抛出异常[InvalidStateError](http://www.w3.org/TR/html5/infrastructure.html#invalidstateerror)，并终止以下步骤。
 *   如果sourceBuffers中所有的SourceBuffer对象的updating属性等于"true",则抛出异常[InvalidStateError](http://www.w3.org/TR/html5/infrastructure.html#invalidstateerror)，并终止以下步骤。
-*   执行end of stream algorithm并将error参数设置成error
+*   执行end of stream算法并将error参数设置成error
 
 ####isTypeSupported,static
+
 判断MediaSource是否可以为指定的MIME type创建SourceBuffer对象。
+
 >如果这个方法返回true，它仅仅表明MediaSource可以为指定的MIME type创建SourceBuffer对象，但是若大量的媒体不支持创建额外的SourceBuffer对象，执行addSourceBuffer()时仍然可能出错。
 >如果这个方法返回true，意味着HTMLMediaElement.canPlayType()可能返回 "maybe" or "probably"，因为MediaSource支持一个类型，但HTMLMediaElement却不能播放是没有意义的。
 
@@ -268,6 +270,7 @@ interface MediaSource : EventTarget {
 | type         | DOMString    |     ✘        |        ✘     |              |
 
 返回类型：boolean
+
 当调用该方法时，用户代理必须执行以下步骤：
 
 *   如果参数type是空字符串，则返回false.
@@ -285,6 +288,7 @@ interface MediaSource : EventTarget {
 | sourceBuffer | SourceBuffer |     ✘        |        ✘     |              |
 
 返回类型：void
+
 当调用该方法时，用户代理必须执行以下步骤：
 
 *   如果指定的sourceBuffer不在sourceBuffers中，则抛出异常[NotFoundError]，并终止以下步骤。
@@ -343,19 +347,19 @@ interface MediaSource : EventTarget {
 
 ###2.4 算法
 
-####2.4.1 连接到媒体标签
+####2.4.1 连接到媒体标签(Attaching to a media element)
 
 一个MediaSource对象可以连接到媒体标签，通过分配一个MediaSource object URL到媒体标签的src属性，一个MediaSource object URL通过MediaSource对象的createObjectURL()创建。
 
-如果[resource fetch algorithm](http://www.w3.org/TR/html5/embedded-content-0.html#concept-media-load-resource)的绝对路径与MediaSource object URL相匹配，那么在执行resource fetch algorithm中的"Perform a potentially CORS-enabled fetch"步骤前，执行以下步骤。
+如果[resource fetch算法](http://www.w3.org/TR/html5/embedded-content-0.html#concept-media-load-resource)的绝对路径与MediaSource object URL相匹配，那么在执行resource fetch算法中的"Perform a potentially CORS-enabled fetch"步骤前，执行以下步骤。
 
-*   如果readyState不是"closed"，执行[resource fetch algorithm](http://www.w3.org/TR/html5/embedded-content-0.html#concept-media-load-resource)中的 "If the media data cannot be fetched at all, due to network errors, causing the user agent to give up trying to fetch the resource"步骤。
+*   如果readyState不是"closed"，执行[resource fetch算法](http://www.w3.org/TR/html5/embedded-content-0.html#concept-media-load-resource)中的 "If the media data cannot be fetched at all, due to network errors, causing the user agent to give up trying to fetch the resource"步骤。
 *   否则
     -   将readyState置为"open".
     -   [触发](http://www.w3.org/TR/html5/webappapis.html#queue-a-task)MediaSource中的sourceopen[事件](http://www.w3.org/TR/html5/webappapis.html#fire-a-simple-event)。
-    -   继续执行[resource fetch algorithm](http://www.w3.org/TR/html5/embedded-content-0.html#concept-media-load-resource)中的"Perform a potentially CORS-enabled fetch"步骤，将[resource fetch algorithm](http://www.w3.org/TR/html5/embedded-content-0.html#concept-media-load-resource)中指向"the download"或者"bytes received"的文字委托到apendBuffer()和appendStream()获得的数据。
+    -   继续执行[resource fetch算法](http://www.w3.org/TR/html5/embedded-content-0.html#concept-media-load-resource)中的"Perform a potentially CORS-enabled fetch"步骤，将[resource fetch算法](http://www.w3.org/TR/html5/embedded-content-0.html#concept-media-load-resource)中指向"the download"或者"bytes received"的文字委托到apendBuffer()和appendStream()获得的数据。
 
-####2.4.2 与媒体标签分离
+####2.4.2 与媒体标签分离(Detaching from a media element)
 
 当媒体标签即将过渡为[NETWORK_EMPTY](http://www.w3.org/TR/html5/embedded-content-0.html#dom-media-network_empty),并[触发](http://www.w3.org/TR/html5/webappapis.html#queue-a-task)媒体标签中的[emptied](http://www.w3.org/TR/html5/embedded-content-0.html#event-mediacontroller-emptied) [事件](http://www.w3.org/TR/html5/webappapis.html#fire-a-simple-event)。时间以下步骤将会在任意情况下执行。
 
@@ -367,17 +371,18 @@ interface MediaSource : EventTarget {
 *   [触发](http://www.w3.org/TR/html5/webappapis.html#queue-a-task)sourceBuffers中的removesourcebuffer[事件](http://www.w3.org/TR/html5/webappapis.html#fire-a-simple-event)。
 *   [触发](http://www.w3.org/TR/html5/webappapis.html#queue-a-task)MediaSource中的sourceclose[事件](http://www.w3.org/TR/html5/webappapis.html#fire-a-simple-event)。
 
-####2.4.3 随机定位
-执行以下几个步骤，并作为[seek algorithm](http://www.w3.org/TR/html5/embedded-content-0.html#dom-media-seek)中"Wait until the user agent has established whether or not the media data for the new playback position is available, and, if it is, until it has decoded enough data to play back that position"步骤的一部分。
+####2.4.3 随机定位(Seeking)
+
+执行以下几个步骤，并作为[seek算法](http://www.w3.org/TR/html5/embedded-content-0.html#dom-media-seek)中"Wait until the user agent has established whether or not the media data for the new playback position is available, and, if it is, until it has decoded enough data to play back that position"步骤的一部分。
 
 *   随机定位进度条时，需要的媒体分段包含新的播放位置。
     -   如果一个或者activeSourceBuffers中的对象缺少指定位置的媒体分段：
         +   如果HTMLMediaElement.readyState属性比HAVE_METADATA大，那么设置HTMLMediaElement.readyState为HAVE_METADATA。
-        +   媒体标签等待appendBuffer()或者appendStream()执行，然后使用coded frame processing algorithm使得HTMLMediaElement.readyState比HAVE_METADATA大。
+        +   媒体标签等待appendBuffer()或者appendStream()执行，然后使用coded frame processing算法使得HTMLMediaElement.readyState比HAVE_METADATA大。
     -   否则继续。
 *   媒体标签重设所有解码器和从initialization segment的合适位置初始化所有数据。
 *   媒体标签从active track buffers中找到新的播放位置最近的随机访问点进行编码。
-*   继续执行seek algorithm中的"Await a stable state"步骤。
+*   继续执行seek算法中的"Await a stable state"步骤。
 
 ####2.4.4 SourceBuffer Monitoring
 ####2.4.5 Changes to selected/enabled track state
@@ -532,7 +537,7 @@ TextTrack对象的列表被该对象创建。
 
 >类型：TrackDefaultList
 
-当initialization segment received algorithm需要创建track对象时，如果initialization segment的种类、标签或者语言等信息不可用，然后可以用该属性的默认轨道。初始化为空的TrackDefaultList对象。
+当initialization segment received算法需要创建track对象时，如果initialization segment的种类、标签或者语言等信息不可用，然后可以用该属性的默认轨道。初始化为空的TrackDefaultList对象。
 
 获取该属性时，返回初始值或者最后设置的值。
 
@@ -557,6 +562,249 @@ videoTracks
 videoTrack对象的列表被该对象创建。
 
 ###3.2 方法
+
+####abort
+
+终止当前分段，并重置分段分析器。
+
+没有参数。
+
+返回类型：void
+
+当调用该方法时，用户代理必须执行以下步骤：
+
+*   如果该对象已经在父MediaSource对象的sourceBuffers中移除，则会抛出异常[InvalidStateError](http://www.w3.org/TR/html5/infrastructure.html#invalidstateerror)，并终止以下步骤。
+*   如果readystate属性不是”open”，则会抛出异常[InvalidStateError](http://www.w3.org/TR/html5/infrastructure.html#invalidstateerror)，并终止以下步骤。
+*   如果updating属性等于true,执行以下步骤：
+    -   如果stream append loop算法和buffer append正在执行，终止之。
+    -   设置updating属性为true.
+    -   [触发](http://www.w3.org/TR/html5/webappapis.html#queue-a-task)此SourceBuffer对象中的abort[事件](http://www.w3.org/TR/html5/webappapis.html#fire-a-simple-event)。
+    -   [触发](http://www.w3.org/TR/html5/webappapis.html#queue-a-task)此SourceBuffer对象中的updateend[事件](http://www.w3.org/TR/html5/webappapis.html#fire-a-simple-event)。
+*   执行reset parser state算法.
+*   设置appendWindowStart为播放开始时间。
+*   设置appendWindowEnd为正无穷。
+
+####appendBuffer
+
+添加ArrayBuffer格式的分段到sourceBuffer.
+
+此方法的这个步骤与ArrayBufferView版本的appendBuffer()相同。
+
+|      参数     |     类型     |   可否为空     |  其他选项      |     描述      |
+|:------------:|:------------:|:------------:|:------------:|:------------:|
+| data         | ArrayBuffer    |     ✘        |        ✘     |              |
+
+返回类型：void
+
+####appendBuffer
+
+添加ArrayBufferView格式的分段到sourceBuffer.
+
+|      参数     |     类型     |   可否为空     |  其他选项      |     描述      |
+|:------------:|:------------:|:------------:|:------------:|:------------:|
+| data         | ArrayBufferView    |     ✘      |      ✘     |            |
+
+返回类型：void
+
+当调用该方法时，用户代理必须执行以下步骤：
+
+*   执行prepare append算法.
+*   添加数据到input buffer的结尾。
+*   设置updating属性为true.
+*   [触发](http://www.w3.org/TR/html5/webappapis.html#queue-a-task)此SourceBuffer对象中的updatestart[事件](http://www.w3.org/TR/html5/webappapis.html#fire-a-simple-event)。
+*   异步执行buffer append算法.
+
+####appendStream
+
+添加ReadableStream格式的分段到sourceBuffer.
+i.w3.org/TR/html5/webappapis.html#queue-a-task)父MediaSource对象中的sourceopen[事件](http://www.w3.org/TR/html5/webappapis.html#fire-a-simple-event)。
+*   执行range removal算法,start和end表示移除的范围。
+
+###3.3 轨道缓冲器
+
+一个轨道缓冲器存储单个轨道的轨道描述和编码帧。通过添加initialization segments和media segments到SourceBuffer里更新轨道缓冲器。
+
+每一个轨道缓冲器具有一个last decode timestamp变量表示加入到当前编码帧组的最后编码帧的解码时间戳，该变量初始化没有设定，表示没有编码帧被加入。
+
+每一个轨道缓冲器具有一个last frame duration变量表示加入到当前编码帧组的最后编码帧的编码帧长。该变量初始化没有设定，表示没有编码帧被加入。
+
+每一个轨道缓冲器具有一个highest presentation timestamp变量表示加入到当前编码帧组的编码帧的最大显示时间戳。该变量初始化没有设定，表示没有编码帧被加入。
+
+每一个轨道缓冲器具有一个need random access point flag变量表示该轨道是否等待一个随机播放点的编码帧，该属性初始化为true,表示在任意可以加到轨道缓冲器的编码帧前，需要随机访问点的编码帧。
+
+每一个轨道缓冲器具有一个track buffer ranges变量表示加入到轨道缓冲器的展示时间范围。出于规范目的，这些信息都被看作是一个[规范化的TimeRanges对象](http://www.w3.org/TR/html5/embedded-content-0.html#normalized-timeranges-object)。
+
+###3.4 事件总结
+
+|事件名称        |     接口     |   触发时间     |
+|:------------:|:------------:|:------------:|
+| updatestart   | Event       |     updating从false变成true|
+| update  | Event        |添加或者移除操作成功完成后，updating从true变成false|
+| updateend   |Event| 添加或者移除操作终止后        |
+| error   | Event       | 在append.updating从false变成true时，出现了错误|
+| abort   | Event       |添加或者移除操作被abort()终止，updating从true变成了false|
+
+###3.5 算法
+
+####3.5.1 分段循环分析(segment parser loop)
+
+每一个SourceBuffer对象都有一个internal append state状态变量，表示分段分析的状态。初始化为WAITING_FOR_SEGMENT,而且在添加数据时可以转化为以下几个状态。
+
+|Append state值|      描述              |
+|:-------------:|:--------------------:|
+| WAITING_FOR_SEGMENT | 等待添加初始化分段或者媒体分段 |
+| PARSING_INIT_SEGMENT | 正在添加初始化分段 |
+| PARSING_MEDIA_SEGMENT | 正在添加媒体分段 |
+
+input buffer是一个字符缓冲区，用来暂存尚未分析的通过appendBuffer()或者appendStream()获取的字节流。当SourceBuffer对象创建的时候，该缓冲区为空。
+
+buffer full flag标志位表示是否允许appendBuffer()或者appendStream()添加更多字节流。当SourceBuffer对象创建的时候，该标志位为false,当数据添加或者移除时，该标志位会被修改。
+
+group start timestamp变量表示在"sequence"模式中，一个新的编码帧组的开始时间戳，当SourceBuffer对象创建时，该变量没有设定，当"mode"设定为"sequence"而且"timestampOffset"属性设定时，或者coded frame processing算法执行时，该属性被更新。
+
+group end timestamp变量表示在当前编码帧组中所有的编码帧中最大的结束时间戳，当SourceBuffer对象创建时，该变量初始化为0,而且在coded frame processing算法中更新。
+>group end timestamp表示的是SourceBuffer中所有的轨道中最大的结束时间戳，因此，当加入混合的未设定时间戳的媒体分段时，应当注意"mode"的设定。
+
+generate timestamps flag是一个boolean类型的变量，通过coded frame processing算法,它表示编码帧的时间戳是否应该更新，该变量由addSourceBuffer()创建SourceBuffer对象完毕后创建。
+
+当分段循环分析算法触发时，用户代理必须执行以下步骤：
+
+*   循环开始：当input buffer为空，转向下面的need more data步骤。
+*   如果input buffer中的字节流违背了[SourceBuffer byte stream format specification](http://www.w3.org/TR/media-source/#sourcebuffer-byte-stream-format-spec)中的规定，那么执行append error算法,并将参数decode error设定为true,并终止此算法。
+*   移除[byte stream format specifications]()规定的必须忽略的input buffer中的头部信息。
+*   如果append state等于WAITING_FOR_SEGMENT,那么执行以下步骤。
+    -   如果input buffer中的头部指示的是初始化分段的开始，那么设定append state为PARSING_INIT_SEGMENT.
+    -   果input buffer中的头部指示的是媒体分段的开始，那么设定append state为PARSING_MEDIA_SEGMENT.
+    -   转向上面的循环开始。
+*   如果append state等于PARSING_INIT_SEGMENT,那么执行以下步骤。
+    -   如果input buffer么有包含所有的初始化分段，那么跳转到下面的need more data步骤。
+    -   执行initialization segment received算法.
+    -   移除input buffer中的初始化分段字节流。
+    -   设定append state为WAITING_FOR_SEGMENT。
+    -   转向上面的循环开始。
+*   如果append state等于PARSING_MEDIA_SEGMENT,那么执行以下步骤。
+    -   如果first initialization segment received flag等于false,那么执行append error算法,并将参数decode error设定为true,并终止此算法。
+    -   如果input buffer没有包含完整的媒体分段的头部，那么跳转到下面的need more data步骤。
+    -   如果input buffer没有包含一个或者多个完整的编码帧，那么执行coded frame processing算法.
+    -   如果该SourceBuffer已经满了，不能接收更多的媒体数据，那么设定buffer full flag为true.
+    -   如果input buffer没有包含完整的媒体分段，那么跳转到下面的need more data步骤。
+    -   移除input buffer开始的媒体分段。
+    -   设定append state为WAITING_FOR_SEGMENT.
+    -   跳转到上边的WAITING_FOR_SEGMENT.
+*   Need more data:返回控制调用的算法。
+
+####3.5.2 重置分析状态(Reset Parser State)
+
+当分析状态需要重置的时候，执行以下步骤：
+
+*   如果append state等于PARSING_MEDIA_SEGMENT，并且input buffer包含完整的编码帧，那么执行coded frame processing算法直到所有的编码帧被处理。
+*   复原所有轨道缓冲器的last decode timestamp.
+*   复原所有轨道缓冲器的last frame duration.
+*   复原所有轨道缓冲器的highest presentation timestamp.
+*   设定所有轨道缓冲器的need random access point flag为true.
+*   移除input buffer中所有字节流。
+*   设定append state为WAITING_FOR_SEGMENT.
+
+####3.5.3 添加错误算法(Append Error Algorithm)
+
+当添加媒体时出现错误时，该算法被调用。该算法具有一个decode error参数，表示endOfStream()是否应该被调用。
+
+*   执行reset parser state算法.
+*   将updating属性设定为false.
+*   [触发](http://www.w3.org/TR/html5/webappapis.html#queue-a-task)sourceBuffer中的error[事件](http://www.w3.org/TR/html5/webappapis.html#fire-a-simple-event)。
+*   [触发](http://www.w3.org/TR/html5/webappapis.html#queue-a-task)sourceBuffer中的error[事件](http://www.w3.org/TR/html5/webappapis.html#fire-a-simple-event)。
+*   如果decode error是true,然后设定error参数为"decode"并执行end of stream算法.
+
+####3.5.4 添加准备算法(Prepare Append Algorithm)
+
+当一个添加操作开始时，以下步骤将会执行，使SourceBuffer生效。
+
+*   如果该对象已经在父MediaSource对象的sourceBuffers中移除，则会抛出异常[InvalidStateError](http://www.w3.org/TR/html5/infrastructure.html#invalidstateerror)，并终止以下步骤。
+*   如果updating属性为true,则会抛出异常[InvalidStateError](http://www.w3.org/TR/html5/infrastructure.html#invalidstateerror)，并终止以下步骤。
+*   如果[HTMLMediaElement.error](http://www.w3.org/TR/html5/embedded-content-0.html#dom-media-error)属性不为空，则会抛出异常[InvalidStateError](http://www.w3.org/TR/html5/infrastructure.html#invalidstateerror)，并终止以下步骤。
+*   如果父MediaSource对象的readyState属性为"ended",执行以下步骤：
+    -   将该readyState设置为"open".
+    -   [触发](http://www.w3.org/TR/html5/webappapis.html#queue-a-task)父MediaSource对象中的sourceopen[事件](http://www.w3.org/TR/html5/webappapis.html#fire-a-simple-event)。
+*   执行coded frame eviction算法.
+*   如果buffer full flag等于true,抛出异常[QuotaExceededError](http://www.w3.org/TR/html5/infrastructure.html#quotaexceedederror).
+
+>这是一个信号，表示添加数据太多已经不允许添加更多数据，web应用应该使用remove()去释放一些空间，减少添加窗口的大小。
+
+####3.5.5 添加缓冲算法(Buffer Append Algorithm)
+
+当appendBuffer()执行时，执行以下步骤处理添加数据：
+
+*   执行segment parser loop算法.
+*   如果前边的segment parser loop算法被终止了，那么终止此算法。
+*   将updating属性置为false.
+*   [触发](http://www.w3.org/TR/html5/webappapis.html#queue-a-task)sourceBuffer中的update[事件](http://www.w3.org/TR/html5/webappapis.html#fire-a-simple-event)。
+*   [触发](http://www.w3.org/TR/html5/webappapis.html#queue-a-task)sourceBuffer中的updateend[事件](http://www.w3.org/TR/html5/webappapis.html#fire-a-simple-event)。
+
+####3.5.6 循环添加流算法(Stream Append Loop)
+
+该算法在调用appendStream()时触发，将ReadableStrem转化为SourceBuffer,该算法随appendStream的两个参数stream和maxSize初始化执行。
+
+*   如果设定了maxSize,那么设定bytesLeft为maxSize.
+*   循环开始：如果设定了maxSize,并且bytesLeft等于0,那么跳转到下边的loop done步骤。
+*   如果stream.state等于"waiting",那么执行以下步骤：
+    -   等待stream.ready或者stream.closed确定解决或者拒绝。
+    -   继续以下步骤。
+*   如果stream.state等于"closed",那么跳转到下边的循环结束步骤。
+*   如果stream.state等于"errored",那么执行append error算法,参数decode error设定为false,并终止此算法。
+*   如果stream.state不等于"readable",那么执行append error算法,参数decode error设定为false,并终止此算法。
+*   当data等于stream.read()返回的值。
+*   如果data不是一个ArrayBuffer或者一个ArrayBufferView,那么执行append error算法,参数decode error设定为false,并终止此算法。
+*   如果设定了maxSize,那么执行以下步骤：
+    -   如果data.byteLength比bytesLeft大，那么执行以下步骤：
+        +   让新的data等于data.slice(0, bytesLeft)返回的值。
+        +   让剩下的data等于data.slice(bytesLeft)返回的值。
+        +   将剩下的data推到stream的头部，因此它可以被stream.read()调用。
+        +   将新的data分配给data.
+    -   从byteLeft中减去data.byteLength.
+*   执行coded frame eviction算法.
+*   如果buffer full flag等于true,那么执行append error算法,参数decode error设定为false,并终止此算法。
+*   添加数据到input buffer的末尾。
+*   执行segment parser loop算法。
+*   如果前一步的segment parser loop算法终止，那么终止此算法。
+*   跳转到上边的循环开始步骤。
+*   [触发](http://www.w3.org/TR/html5/webappapis.html#queue-a-task)sourceBuffer中的update[事件](http://www.w3.org/TR/html5/webappapis.html#fire-a-simple-event)。
+*   [触发](http://www.w3.org/TR/html5/webappapis.html#queue-a-task)sourceBuffer中的updateend[事件](http://www.w3.org/TR/html5/webappapis.html#fire-a-simple-event)。
+
+####3.5.7 移除缓冲范围(Range Removal)
+
+当调用一个显式范围移除操作并阻碍其它SourceBuffer更新时，执行以下步骤：
+
+*   让start等于待移除范围的开始时间戳。
+*   让end等于待移除范围的结束时间戳。
+*   让updating属性等于true.
+*   [触发](http://www.w3.org/TR/html5/webappapis.html#queue-a-task)sourceBuffer中的updatestart[事件](http://www.w3.org/TR/html5/webappapis.html#fire-a-simple-event)。
+*   返回给调用者，并异步执行以下步骤。
+*   使用start和end作为移除的起始和结束范围执行coded frame removal算法。
+*   让updating属性等于false.
+*   [触发](http://www.w3.org/TR/html5/webappapis.html#queue-a-task)sourceBuffer中的update[事件](http://www.w3.org/TR/html5/webappapis.html#fire-a-simple-event)。
+*   [触发](http://www.w3.org/TR/html5/webappapis.html#queue-a-task)sourceBuffer中的updateend[事件](http://www.w3.org/TR/html5/webappapis.html#fire-a-simple-event)。
+
+####3.5.8 初始化分段接收完毕(Initialization Segment Received)
+
+当segment parser loop算法成功接收一段完整的初始化分段(initialization segment)时，执行以下步骤：
+
+*   每一个SourceBuffer对象都有一个internal first initialization segment received标志，表示初始化分段是否被该算法添加或者接收。当SourceBuffer创建后，该标志设置为false,并在以下步骤中被更新。
+*   如果duration等于NaN,那么更新该属性：
+    -   如果初始化分段包含一个duration,那么设定新的duration为初始化分段中的duration,并执行duration change算法。
+    -   否则，将duration设置为infinity,并执行duration change算法。
+*   如果初始化分段没有音频，视频或者文本轨道，那么执行append error算法,并将参数decode error设定为true,并终止此算法。
+*   如果first initialization segment received flag为true,那么执行以下步骤：
+    -   验证以下属性，如果有一项不符合，那么行append error算法,并将参数decode error设定为true,并终止此算法。
+        +   音频，视频和文本轨道的数量与第一个初始化分段的个数相同。
+        +   每个轨道的编解码器跟第一个初始化分段指定的相同。
+        +   如果不止一个轨道类型存在(如两个音频轨道存在)，那么轨道ID需要跟第一个初始化分段中的的相对应。
+    -   从初始化分段中提取轨道描述添加到每一个轨道缓冲器。
+    -   设定所有轨道缓冲器的need random access point flag为true.
+*   让active track flag等于true.
+*   如果first initialization segment received flag为false,那么执行以下步骤：
+    -   如果initialization segment中轨道的编码类型不被支持，那么执行append error算法,并将参数decode error设定为true,并终止此算法。
+    >
+    -   
 
 
 
