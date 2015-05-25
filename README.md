@@ -439,8 +439,8 @@ interface SourceBuffer : EventTarget {
 
 *   如果该属性已经从父MediaSource对象的sourceBuffers属性中移除，则抛出异常[InvalidStateError](http://www.w3.org/TR/html5/infrastructure.html#invalidstateerror),并终止以下步骤。
 *   如果updating属性为true,则抛出异常[InvalidStateError](http://www.w3.org/TR/html5/infrastructure.html#invalidstateerror),并终止以下步骤。
-*   如果新的值为NaN，则抛出异常[InvalidAccessError](http://www.w3.org/TR/html5/infrastructure.html#invalidaccesserror),并终止以下步骤。
-*   如果新的值小于等于appendWindowStart,则抛出异常[InvalidAccessError](http://www.w3.org/TR/html5/infrastructure.html#invalidaccesserror),并终止以下步骤。
+*   如果new value为NaN，则抛出异常[InvalidAccessError](http://www.w3.org/TR/html5/infrastructure.html#invalidaccesserror),并终止以下步骤。
+*   如果new value小于等于appendWindowStart,则抛出异常[InvalidAccessError](http://www.w3.org/TR/html5/infrastructure.html#invalidaccesserror),并终止以下步骤。
 *   更新属性值为新值。
 
 ####appendWindowStart
@@ -455,7 +455,7 @@ interface SourceBuffer : EventTarget {
 
 *   如果该属性已经从父MediaSource对象的sourceBuffers属性中移除，则抛出异常[InvalidStateError](http://www.w3.org/TR/html5/infrastructure.html#invalidstateerror),并终止以下步骤。
 *   如果updating属性为true,则抛出异常[InvalidStateError](http://www.w3.org/TR/html5/infrastructure.html#invalidstateerror),并终止以下步骤。
-*   如果新的值小于0或者大于appendWindowEnd,则抛出异常[InvalidAccessError](http://www.w3.org/TR/html5/infrastructure.html#invalidaccesserror),并终止以下步骤。
+*   如果new value小于0或者大于appendWindowEnd,则抛出异常[InvalidAccessError](http://www.w3.org/TR/html5/infrastructure.html#invalidaccesserror),并终止以下步骤。
 *   更新属性值为新值。
 
 ####audioTracks
@@ -489,7 +489,7 @@ AudioTrack对象的列表通过此对象创建。
 
 >类型：AppendMode
 
-控制meidaSegments被处理的方式，当对象初始化之后，通过addSourceBuffer()方法初始化该属性。
+控制处理媒体分片的方式，当对象初始化之后，通过addSourceBuffer()方法初始化该属性。
 
 获取该属性时，返回初始值或者最后设置的值。
 
@@ -497,14 +497,14 @@ AudioTrack对象的列表通过此对象创建。
 
 *   如果该对象已经在父MediaSource对象的sourceBuffers中移除，则会抛出异常[InvalidStateError](http://www.w3.org/TR/html5/infrastructure.html#invalidstateerror)，并终止以下步骤。
 *   如果updating属性等于true,则会抛出异常[InvalidStateError](http://www.w3.org/TR/html5/infrastructure.html#invalidstateerror)，并终止以下步骤。
-*   让新的mode等于分配给其的新值。
-*   如果generate timestamps flag等于true,而且新的mode等于"segments",则会抛出异常[InvalidAccessError](http://www.w3.org/TR/html5/infrastructure.html#invalidaccesserror)，并终止以下步骤。
+*   让new mode等于分配给其的新值。
+*   如果generate timestamps flag等于true,而且new mode等于"segments",则会抛出异常[InvalidAccessError](http://www.w3.org/TR/html5/infrastructure.html#invalidaccesserror)，并终止以下步骤。
 *   如果父MediaSource对象的readyState属性为"ended",执行以下步骤：
     -   将该readyState设置为"open".
     -   [触发](http://www.w3.org/TR/html5/webappapis.html#queue-a-task)父MediaSource对象中的sourceopen[事件](http://www.w3.org/TR/html5/webappapis.html#fire-a-simple-event)。
 *   如果append state等于PARSING_MEDIA_SEGMENT,则会抛出异常[InvalidStateError](http://www.w3.org/TR/html5/infrastructure.html#invalidstateerror)，并终止以下步骤。
-*   如果新的mode等于"sequence",那么设置group start timestamp为group end timestamp.
-*   更新属性为新的mode值。
+*   如果new mode等于"sequence",那么设置group start timestamp为group end timestamp.
+*   更新属性为new mode值。
 
 ####textTracks
 
@@ -523,15 +523,15 @@ TextTrack对象的列表被该对象创建。
 
 设置时，执行以下几个步骤：
 
-*   让新的timestamp值等于设置的新值。
+*   让new timestamp值等于设置的新值。
 *   如果该对象已经在父MediaSource对象的sourceBuffers中移除，则会抛出异常[InvalidStateError](http://www.w3.org/TR/html5/infrastructure.html#invalidstateerror)，并终止以下步骤。
 *   如果updating属性等于true,则会抛出异常[InvalidStateError](http://www.w3.org/TR/html5/infrastructure.html#invalidstateerror)，并终止以下步骤。
 *   如果父MediaSource对象的readyState属性为"ended",执行以下步骤：
     -   将该readyState设置为"open".
     -   [触发](http://www.w3.org/TR/html5/webappapis.html#queue-a-task)父MediaSource对象中的sourceopen[事件](http://www.w3.org/TR/html5/webappapis.html#fire-a-simple-event)。
 *   如果append state等于PARSING_MEDIA_SEGMENT,则会抛出异常[InvalidStateError](http://www.w3.org/TR/html5/infrastructure.html#invalidstateerror)，并终止以下步骤。
-*   如果新的mode等于"sequence",那么设置group start timestamp为group end timestamp.
-*   更新属性为新的timestamp值。
+*   如果new mode等于"sequence",那么设置group start timestamp为group end timestamp.
+*   更新属性为new timestamp值。
 
 ####trackDefaults
 
@@ -756,10 +756,10 @@ generate timestamps flag是一个boolean类型的变量，通过coded frame proc
 *   如果data不是一个ArrayBuffer或者一个ArrayBufferView,那么执行append error算法,参数decode error设定为false,并终止此算法。
 *   如果设定了maxSize,那么执行以下步骤：
     -   如果data.byteLength比bytesLeft大，那么执行以下步骤：
-        +   让新的data等于data.slice(0, bytesLeft)返回的值。
-        +   让剩下的data等于data.slice(bytesLeft)返回的值。
-        +   将剩下的data推到stream的头部，因此它可以被stream.read()调用。
-        +   将新的data分配给data.
+        +   让new data等于data.slice(0, bytesLeft)返回的值。
+        +   让remaining data等于data.slice(bytesLeft)返回的值。
+        +   让remaining data推到stream的头部，因此它可以被stream.read()调用。
+        +   将new data分配给data.
     -   从byteLeft中减去data.byteLength.
 *   执行coded frame eviction算法.
 *   如果buffer full flag等于true,那么执行append error算法,参数decode error设定为false,并终止此算法。
@@ -790,7 +790,7 @@ generate timestamps flag是一个boolean类型的变量，通过coded frame proc
 
 *   每一个SourceBuffer对象都有一个internal first initialization segment received标志，表示初始化分段是否被该算法添加或者接收。当SourceBuffer创建后，该标志设置为false,并在以下步骤中被更新。
 *   如果duration等于NaN,那么更新该属性：
-    -   如果初始化分段包含一个duration,那么设定新的duration为初始化分段中的duration,并执行duration change算法。
+    -   如果初始化分段包含一个duration,那么设定new duration为初始化分段中的duration,并执行duration change算法。
     -   否则，将duration设置为infinity,并执行duration change算法。
 *   如果初始化分段没有音频，视频或者文本轨道，那么执行append error算法,并将参数decode error设定为true,并终止此算法。
 *   如果first initialization segment received flag为true,那么执行以下步骤：
@@ -803,8 +803,104 @@ generate timestamps flag是一个boolean类型的变量，通过coded frame proc
 *   让active track flag等于true.
 *   如果first initialization segment received flag为false,那么执行以下步骤：
     -   如果initialization segment中轨道的编码类型不被支持，那么执行append error算法,并将参数decode error设定为true,并终止此算法。
-    >
-    -   
+    >group end timestamp存储了一个SourceBuffer中所有轨道缓冲器中最大的coded frame end timestamp,因此，应该注意在添加多重媒体分段时mode属性的设定，以防轨道之间的时间戳不一致。
+    -   对于初始化分段中的每个音频轨道，执行以下步骤：
+        +   让audio byte stream track ID等于当前处理的轨道的轨道ID.
+        +   让audio language为初始化分段中规定的BCP 47语言，或者如果没有语言需要呈现，置其为空字符串。
+        +   如果audio language为空字符串或者为'und' BCP 47,那么执行default track language算法，并将byteStreamTrackID设置为audio byte stream track ID,将type设置为"audio",并让audio language等于该算法的返回值。
+        +   让audio label为初始化分组中该轨道指定的label,或者如果没有label呈现，设置其为空字符串。
+        +   如果audio label等于一个空字符串，那么执行default track label算法，并将byteStreamTrackID设置为audio byte stream track ID,将type设置为"audio",并让audio label等于该算法的返回值。
+        +   让audio kinds为初始化分组中该轨道指定的kind字符串，或者如果没有提供kind信息，设置其为空字符串。
+        +   如果audio kinds等于一个空数组，那么执行default track kinds算法，并将byteStreamTrackID设置为audio byte stream track ID,将type设置为"audio",并让audio kind等于该算法的返回值。
+        +   对于audio kinds中的每一项，执行以下步骤：
+            *   让current audio kind等于当前audio kinds迭代项。
+            *   让new audio track为一个新的AudioTrack对象。
+            *   生成一个唯一的ID,并将其赋给new audio track的id属性。
+            *   将audio language赋给new audio track的language属性。
+            *   将audio label赋给new audio track的label属性。
+            *   将current audio kind赋给new audio track的kind属性
+            *   如果audioTracks.length为0，那么执行以下步骤：
+                -   让new audio track的enabled属性为true.
+                -   让active track flag为true.
+            *   添加new audio track到该SourceBuffer对象的audioTracks属性。
+            *   [触发](http://www.w3.org/TR/html5/webappapis.html#queue-a-task)[addtrack](http://www.w3.org/TR/html5/embedded-content-0.html#handler-tracklist-onaddtrack)事件([trusted event](http://www.w3.org/TR/html5/infrastructure.html#concept-events-trusted) 不可撤销)。并且使用了该SourceBuffer对象引用的AudioTrackList对象中的TrackEvent接口。
+            *   添加new audio track到HTMLMediaElement的audioTracks属性。
+            *   [触发](http://www.w3.org/TR/html5/webappapis.html#queue-a-task)[addtrack](http://www.w3.org/TR/html5/embedded-content-0.html#handler-tracklist-onaddtrack)事件([trusted event](http://www.w3.org/TR/html5/infrastructure.html#concept-events-trusted) 不可撤销)。并且使用了HTMLMediaElement引用的AudioTrackList对象中的TrackEvent接口。
+        +   创建一个新的轨道缓冲器储存该轨道的编码帧。
+        +   为该轨道添加轨道描述，添加到轨道缓冲器。
+    -   对于初始化分段中的每个视频轨道，执行以下步骤：
+        +   让video byte stream track ID等于当前处理的轨道的轨道ID.
+        +   让video language为初始化分段中规定的BCP 47语言，或者如果没有语言需要呈现，置其为空字符串。
+        +   如果video language为空字符串或者为'und' BCP 47,那么执行default track language算法，并将byteStreamTrackID设置为video byte stream track ID,将type设置为"video",并让video language等于该算法的返回值。
+        +   让video label为初始化分组中该轨道指定的label,或者如果没有label呈现，设置其为空字符串。
+        +   如果video label等于一个空字符串，那么执行default track label算法，并将byteStreamTrackID设置为video byte stream track ID,将type设置为"video",并让video label等于该算法的返回值。
+        +   让video kinds为初始化分组中该轨道指定的kind字符串，或者如果没有提供kind信息，设置其为空字符串。
+        +   如果video kinds等于一个空数组，那么执行default track kinds算法，并将byteStreamTrackID设置为video byte stream track ID,将type设置为"video",并让video kind等于该算法的返回值。
+        +   对于video kinds中的每一项，执行以下步骤：
+            *   让current video kind等于当前video kinds迭代项。
+            *   让new video track为一个新的VideoTrack对象。
+            *   生成一个唯一的ID,并将其赋给new video track的id属性。
+            *   将video language赋给new video track的language属性。
+            *   将video label赋给new video track的label属性。
+            *   将current video kind赋给new video track的kind属性
+            *   如果videoTracks.length为0，那么执行以下步骤：
+                -   让new video track的selected属性为true.
+                -   让active track flag为true.
+            *   添加new video track到该SourceBuffer对象的videoTracks属性。
+            *   [触发](http://www.w3.org/TR/html5/webappapis.html#queue-a-task)[addtrack](http://www.w3.org/TR/html5/embedded-content-0.html#handler-tracklist-onaddtrack)事件([trusted event](http://www.w3.org/TR/html5/infrastructure.html#concept-events-trusted) 不可撤销)。并且使用了该SourceBuffer对象引用的VideoTrackList对象中的TrackEvent接口。
+            *   添加new video track到HTMLMediaElement的videoTracks属性。
+            *   [触发](http://www.w3.org/TR/html5/webappapis.html#queue-a-task)[addtrack](http://www.w3.org/TR/html5/embedded-content-0.html#handler-tracklist-onaddtrack)事件([trusted event](http://www.w3.org/TR/html5/infrastructure.html#concept-events-trusted) 不可撤销)。并且使用了HTMLMediaElement引用的VideoTrackList对象中的TrackEvent接口。
+        +   创建一个新的轨道缓冲器储存该轨道的编码帧。
+        +   为该轨道添加轨道描述，添加到轨道缓冲器。
+    -   对于初始化分段中的每个文本轨道，执行以下步骤：
+        +   让text byte stream track ID等于当前处理的轨道的轨道ID.
+        +   让text language为初始化分段中规定的BCP 47语言，或者如果没有语言需要呈现，置其为空字符串。
+        +   如果text language为空字符串或者为'und' BCP 47,那么执行default track language算法，并将byteStreamTrackID设置为text byte stream track ID,将type设置为"text",并让text language等于该算法的返回值。
+        +   让text label为初始化分组中该轨道指定的label,或者如果没有label呈现，设置其为空字符串。
+        +   如果text label等于一个空字符串，那么执行default track label算法，并将byteStreamTrackID设置为text byte stream track ID,将type设置为"text",并让text label等于该算法的返回值。
+        +   让text kinds为初始化分组中该轨道指定的kind字符串，或者如果没有提供kind信息，设置其为空字符串。
+        +   如果text kinds等于一个空数组，那么执行default track kinds算法，并将byteStreamTrackID设置为text byte stream track ID,将type设置为"text",并让text kind等于该算法的返回值。
+        +   对于text kinds中的每一项，执行以下步骤：
+            *   让current text kind等于当前text kinds迭代项。
+            *   让new text track为一个新的TextTrack对象。
+            *   生成一个唯一的ID,并将其赋给new text track的id属性。
+            *   将text language赋给new text track的language属性。
+            *   将text label赋给new text track的label属性。
+            *   将current text kind赋给new text track的kind属性
+            *   如果textTracks.length为0，那么执行以下步骤：
+                -   让new text track的enabled属性为true.
+                -   让active track flag为true.
+            *   添加new text track到该SourceBuffer对象的textTracks属性。
+            *   [触发](http://www.w3.org/TR/html5/webappapis.html#queue-a-task)[addtrack](http://www.w3.org/TR/html5/embedded-content-0.html#handler-tracklist-onaddtrack)事件([trusted event](http://www.w3.org/TR/html5/infrastructure.html#concept-events-trusted) 不可撤销)。并且使用了该SourceBuffer对象引用的TextTrackList对象中的TrackEvent接口。
+            *   添加new text track到HTMLMediaElement的textTracks属性。
+            *   [触发](http://www.w3.org/TR/html5/webappapis.html#queue-a-task)[addtrack](http://www.w3.org/TR/html5/embedded-content-0.html#handler-tracklist-onaddtrack)事件([trusted event](http://www.w3.org/TR/html5/infrastructure.html#concept-events-trusted) 不可撤销)。并且使用了HTMLMediaElement引用的TextTrackList对象中的TrackEvent接口。
+        +   创建一个新的轨道缓冲器储存该轨道的编码帧。
+        +   为该轨道添加轨道描述，添加到轨道缓冲器。
+    -   如果active track flag等于true,那么执行以下步骤：
+        +   添加该SourceBuffer到activeSourceBuffers.
+        +   [触发](http://www.w3.org/TR/html5/webappapis.html#queue-a-task)activeSourceBuffers中的addSourceBuffer[事件](http://www.w3.org/TR/html5/webappapis.html#fire-a-simple-event)。
+    -   设置first initialization segment received flag为true.
+*   如果HTMLMediaElement.readyState属性为HAVE_NOTHING,那么执行以下步骤：
+    -   如果sourceBuffers中有一个或者多个对象的 first initialization segment received flag设定为false,那么终止以下按步骤。
+    -   设置HTMLMediaElement.readyState为HAVE_METADATA.
+    -   [触发](http://www.w3.org/TR/html5/webappapis.html#queue-a-task)媒体标签中的loadedmetadata[事件](http://www.w3.org/TR/html5/webappapis.html#fire-a-simple-event)。
+*   如果active track flag等于true并且HTMLMediaElement.readyState属性比HAVE_CURRENT_DATA大，那么设置HAVE_CURRENT_DATA为HAVE_METADATA.
 
+#### 3.5.9 Default track language
 
+#### 3.5.10 Default track label
+
+#### 3.5.11 Default track kinds
+
+#### 3.5.12 Coded Frame Processing
+
+#### 3.5.13 Coded Frame Removal Algorithm
+
+#### 3.5.14 Coded Frame Eviction Algorithm
+
+#### 3.5.15 Audio Splice Frame Algorithm
+
+#### 3.5.16 Audio Splice Rendering Algorithm
+
+#### 3.5.17 Text Splice Frame Algorithm
 
