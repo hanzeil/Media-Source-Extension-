@@ -616,7 +616,23 @@ videoTrack对象的列表被该对象创建。
 
 ####appendStream
 
-添加ReadableStream格式的分段到sourceBuffer.
+添加ReadableStream格式的分段到sourceBuffer。
+|      参数     |     类型     |   可否为空     |  其他选项      |     描述      |
+|:------------:|:------------:|:------------:|:------------:|:------------:|
+| stream         | ReadableStream    |     ✘      |      ✘     |            |
+|    maxSize       | unsigned long long    |     ✘      |      ✔     |            |
+
+返回类型：void
+当调用该方法时，用户代理必须执行以下步骤：
+
+*   执行prepare append算法.
+*   设置updating属性为true.
+*   [触发](http://www.w3.org/TR/html5/webappapis.html#queue-a-task)此SourceBuffer对象中的updatestart[事件](http://www.w3.org/TR/html5/webappapis.html#fire-a-simple-event)。
+*   以参数stream和MaxSize异步执行stream append loop算法。
+
+####remove
+
+移除指定范围的媒体数据。
 i.w3.org/TR/html5/webappapis.html#queue-a-task)父MediaSource对象中的sourceopen[事件](http://www.w3.org/TR/html5/webappapis.html#fire-a-simple-event)。
 *   执行range removal算法,start和end表示移除的范围。
 
