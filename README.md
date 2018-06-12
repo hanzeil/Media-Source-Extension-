@@ -14,7 +14,7 @@
 >Adrian Bateman, Microsoft Corporation  
 >Mark Watson, Netflix Inc.  
 >翻译者：  
->Hanzeil. hanzeil.xyz. tang5266868@gmail.com  
+>Hanzeil
 
 ##Abstract
 Media Source API继承于HTMLMediaElement，它允许JavaScript生成可以播放的媒体流，使许多应用场景更加便利，比如自适应流及时移(adaptive streaming and time shifting live streams).  
